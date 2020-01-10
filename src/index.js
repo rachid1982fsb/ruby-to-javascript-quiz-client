@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import App from './App'
 
 
-// import Root from './Root'
+import Root from './Root'
 import './index.css';
 import reducer from './reducers'
 import 'semantic-ui-css/semantic.min.css';
@@ -18,10 +16,7 @@ const initialState = {
 
 const store = createStore(reducer, initialState)
 
-ReactDOM.render(
-            <Provider store={store}>
-                <App store={store} />
-            </Provider>, document.getElementById('root'));
+ReactDOM.render(<Root store={store} />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

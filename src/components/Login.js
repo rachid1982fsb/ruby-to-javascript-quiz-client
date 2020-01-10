@@ -7,13 +7,19 @@ class Login extends React.Component{
 
     state=({
         username: "ne",
-        password: "",
+        password: ""
     })
 
     handelUsernameChange=(e)=>{
         this.setState({
             username: e.target.value
+
         })
+    }
+
+
+    handelLoginClick=()=>{
+        this.props.changeUsername(this.state.username)
     }
     render(){
             return(
@@ -25,7 +31,14 @@ class Login extends React.Component{
                                 <div className="field">
                                     <label>Username</label>
                                         <div className="ui left icon input">
-                                            <input type="text" placeholder="Username"     onChange={this.handelUsernameChange}/>
+                                            <input type="text" placeholder="Username"   onChange={this.handelUsernameChange}/>
+                                                <i className="user icon"></i>
+                                        </div>
+                                </div>
+                                <div className="field">
+                                    <label>Usernamedisplay</label>
+                                        <div className="ui left icon input">
+                                            <input type="text" placeholder="Username"   value={this.props.username}/>
                                                 <i className="user icon"></i>
                                         </div>
                                 </div>
@@ -36,7 +49,7 @@ class Login extends React.Component{
                                         <i className="lock icon"></i>
                                     </div>
                                 </div>
-                                <div className="ui blue submit button" onClick={(e)=> { changeUsername(this.state.username)}}>Login</div>
+                                <div className="ui blue submit button" onClick={()=> this.handelLoginClick() }>Login</div>
                             </div>
                         </div>
                         <div className="middle aligned column">
@@ -66,6 +79,7 @@ const mapStateToProps= state =>{
 }
 
 const mapDispatchToProps= dispatch =>{
+    console.log("dispatch")
     return {
         changeUsername: username => dispatch(changeUsername(username))
     }
