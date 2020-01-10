@@ -1,15 +1,9 @@
 import React from 'react'
+import * as BarLinkStyle from '../contstants/Link'
 import { NavLink } from 'react-router-dom';
 
 
-const link = {
-    width: '100px',
-    padding: '12px',
-    margin: '0 6px 6px',
-    background: 'blue',
-    textDecoration: 'none',
-    color: 'white',
-  }
+
 
   class Navbar extends React.Component {
     render() {
@@ -18,7 +12,7 @@ const link = {
           <NavLink
             to="/login"
             exact
-            style={link}
+            style={BarLinkStyle.Link}
             activeStyle={{
               background: 'darkblue'
             }}
@@ -26,7 +20,7 @@ const link = {
             <NavLink
             to="/about"
             exact
-            style={link}
+            style={BarLinkStyle.Link}
             activeStyle={{
               background: 'darkblue'
             }}

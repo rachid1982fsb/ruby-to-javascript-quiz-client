@@ -1,6 +1,8 @@
 import React from 'react';
 import {changeUsername} from '../actions'
 import {connect} from 'react-redux'
+import { NavLink } from 'react-router-dom';
+
 
 
 class Login extends React.Component{
@@ -21,6 +23,12 @@ class Login extends React.Component{
     handelLoginClick=()=>{
         this.props.changeUsername(this.state.username)
     }
+
+    onHandleSignupClick=()=>{
+        console.log("jbja")
+        return <a href="/signup"></a>
+    }
+
     render(){
             return(
                 <div>
@@ -55,10 +63,10 @@ class Login extends React.Component{
                         <div className="middle aligned column">
                         <div className="ui big button" >
                             <i className="signup icon"></i>
-                            Sign Up
+                            <NavLink to="/signup" exact >Sign Up</NavLink>
                         </div><br/>
                         <div className="ui big button" >
-                            Play As Guest
+                            Guest
                         </div>
                         </div>
                     </div>
