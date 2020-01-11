@@ -11,7 +11,7 @@ import * as serviceWorker from './serviceWorker';
 
 
 const initialState = {
-    username: "name"
+    currentUser: {}
 }
 
 const store = createStore(reducer, initialState)

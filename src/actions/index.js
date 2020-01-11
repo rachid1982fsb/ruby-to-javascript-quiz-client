@@ -1,9 +1,9 @@
 
 
-export const changeUsername =(username)=>{
-    console.log(username)
+export const changeUsername =(currentUser)=>{
+    console.log(currentUser)
     return {
         type: "CHANGE_USERNAME",
-        payload: username
+        payload: currentUser
     }
 }

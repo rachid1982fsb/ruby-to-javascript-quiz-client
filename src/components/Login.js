@@ -3,29 +3,49 @@ import {changeUsername} from '../actions'
 import {connect} from 'react-redux'
 import { NavLink } from 'react-router-dom';
 
+import {login, getCurrentUser} from '../services/Api'
+
 
 
 class Login extends React.Component{
 
     state=({
-        username: "ne",
-        password: ""
+        fields: {
+            username: "",
+            password: ""
+        }
     })
 
-    handelUsernameChange=(e)=>{
-        this.setState({
-            username: e.target.value
-
-        })
+    handelChange=(e)=>{
+        const newFields = { ...this.state.fields, [e.target.id]: e.target.value };
+        this.setState({ fields: newFields });
     }
 
+    handelLoginClick = e => {
+        e.preventDefault();
+        login(this.state.fields).then(res => {
+          if (!res.error) {
+            console.log(res)
+            localStorage.setItem('token', res.jwt);
+            getCurrentUser().then(user => {
+                console.log(user)
+                this.props.changeUsername(user)
+            })
+            // // const updatedState = { ...this.state.auth, user: res };
+            // this.props.onLogin(res);
+            // this.props.history.push('/');
+          } else {
+              console.log("eroor")
+            // this.setState({ error: true });
+          }
+        });
+      };
 
-    handelLoginClick=()=>{
-        this.props.changeUsername(this.state.username)
-    }
+    // handelLoginClick=()=>{
+    //     this.props.changeUsername(this.state.username)
+    // }
 
     onHandleSignupClick=()=>{
-        console.log("jbja")
         return <a href="/signup"></a>
     }
 
@@ -39,7 +59,7 @@ class Login extends React.Component{
                                 <div className="field">
                                     <label>Username</label>
                                         <div className="ui left icon input">
-                                            <input type="text" placeholder="Username"   onChange={this.handelUsernameChange}/>
+                                            <input type="text" placeholder="Username" id="username"  onChange={this.handelChange}/>
                                                 <i className="user icon"></i>
                                         </div>
                                 </div>
@@ -53,11 +73,11 @@ class Login extends React.Component{
                                 <div className="field">
                                     <label>Password</label>
                                     <div className="ui left icon input">
-                                        <input type="password"/>
+                                        <input type="password" id="password" onChange={this.handelChange}/>
                                         <i className="lock icon"></i>
                                     </div>
                                 </div>
-                                <div className="ui blue submit button" onClick={()=> this.handelLoginClick() }>Login</div>
+                                <div className="ui blue submit button" onClick={(e)=> this.handelLoginClick(e)}>Login</div>
                             </div>
                         </div>
                         <div className="middle aligned column">
@@ -82,14 +102,14 @@ class Login extends React.Component{
 
 const mapStateToProps= state =>{
     return {
-        username: state.username
+        fields: state.fields
     }
 }
 
 const mapDispatchToProps= dispatch =>{
     console.log("dispatch")
     return {
-        changeUsername: username => dispatch(changeUsername(username))
+        changeUsername: user => dispatch(changeUsername(user))
     }
 }
 
