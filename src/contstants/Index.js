@@ -11,3 +11,4 @@ export const Link = {
 export const URL="http://127.0.0.1:3000/users"
 export const AUTH_URL="http://127.0.0.1:3000/auth"
 export const CURRENT_USER_URL="http://127.0.0.1:3000/current_user"
+export const token = localStorage.getItem('token');

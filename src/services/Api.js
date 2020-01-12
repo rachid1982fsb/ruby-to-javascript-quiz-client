@@ -1,12 +1,12 @@
 import * as contstant from '../contstants/Index'
 
-const token = localStorage.getItem('token');
-
 const headers = {
     'Content-Type': 'application/json',
     Accepts: 'application/json',
-    Authorization: token
+    Authorization: contstant.token
 };
+
+
 
 
 export const login = data => {
@@ -24,6 +24,7 @@ export const getCurrentUser = () => {
       return res.json()});
   };
 
+  
 export const createUser=(data)=>{
     console.log(data)
     fetch(contstant.URL, {

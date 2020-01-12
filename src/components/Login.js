@@ -3,7 +3,7 @@ import {changeUsername} from '../actions'
 import {connect} from 'react-redux'
 import { NavLink } from 'react-router-dom';
 
-import {login, getCurrentUser} from '../services/Api'
+import {login} from '../services/Api'
 
 
 
@@ -16,6 +16,7 @@ class Login extends React.Component{
         }
     })
 
+
     handelChange=(e)=>{
         const newFields = { ...this.state.fields, [e.target.id]: e.target.value };
         this.setState({ fields: newFields });
@@ -26,13 +27,7 @@ class Login extends React.Component{
         login(this.state.fields).then(res => {
           if (!res.error) {
             console.log(res)
-            localStorage.setItem('token', res.jwt);
-            getCurrentUser().then(user => {
-                console.log(user)
-                this.props.changeUsername(user)
-            })
-            // // const updatedState = { ...this.state.auth, user: res };
-            // this.props.onLogin(res);
+            this.props.onLogin(res);
             // this.props.history.push('/');
           } else {
               console.log("eroor")
@@ -40,6 +35,7 @@ class Login extends React.Component{
           }
         });
       };
+ 
 
     // handelLoginClick=()=>{
     //     this.props.changeUsername(this.state.username)
@@ -102,7 +98,7 @@ class Login extends React.Component{
 
 const mapStateToProps= state =>{
     return {
-        fields: state.fields
+        currentUser: state.currentUser
     }
 }
 

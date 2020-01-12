@@ -7,3 +7,10 @@ export const changeUsername =(currentUser)=>{
         payload: currentUser
     }
 }
+export const logout =()=>{
+    localStorage.removeItem('token');
+    return {
+        type: "LOGOUT",
+        payload: {}
+    }
+}

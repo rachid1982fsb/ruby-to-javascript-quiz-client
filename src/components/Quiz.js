@@ -1,9 +1,18 @@
 import React from 'react';
- 
+import {connect} from 'react-redux'
+
 class Quiz extends React.Component {
   render() {
-    return <h1>This is my Quiz component!</h1>;
+    const {username} = this.props.currentUser
+  return <h1>This is my Quiz component! Hello: {username}</h1>;
   }
 }
  
-export default Quiz;
+
+const mapStateToProps= state =>{
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+export default connect(mapStateToProps)(Quiz)
