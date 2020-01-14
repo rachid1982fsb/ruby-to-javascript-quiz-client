@@ -1,5 +1,5 @@
 import React from 'react';
-import {changeUsername} from '../actions'
+import {onLogin} from '../actions'
 import {connect} from 'react-redux'
 import { NavLink } from 'react-router-dom';
 
@@ -103,9 +103,8 @@ const mapStateToProps= state =>{
 }
 
 const mapDispatchToProps= dispatch =>{
-    console.log("dispatch")
     return {
-        changeUsername: user => dispatch(changeUsername(user))
+        onLogin: resp => dispatch(onLogin(resp))
     }
 }
 

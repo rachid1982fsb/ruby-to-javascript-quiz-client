@@ -4,31 +4,29 @@ import {connect} from 'react-redux'
 import * as contstant from './contstants/Index'
 import './App.css';
 import Login from './components/Login'
-import Quiz from './components/Quiz'
+import Quiz from './containers/Quiz'
 import {getCurrentUser} from './services/Api'
-import {changeUsername} from './actions'
+import {onLogin, setSources, setTestCases} from './actions'
+import {fetchSource, fetchTestCases} from './services/Api'
+
 
 
 
 class App extends React.Component {
 
   componentDidMount() {
+    console.log("we are here")
+    fetchSource().then(res => this.props.setSources(res))
+    fetchTestCases().then(res => this.props.setTestCases(res))
     if (contstant.token) {
       console.log('there is a token');
       // make a request to the backend and find our user
        getCurrentUser().then(user => {
         console.log(user)
-        this.props.changeUsername(user)
+        this.props.onLogin(user)
       });
     }
   }
-
-  login = data => {
-    console.log(data)
-    localStorage.setItem('token', data.jwt);
-    this.props.changeUsername(data) 
-  }; 
-  
 
   render(){
         return (
@@ -42,14 +40,18 @@ class App extends React.Component {
 
   const mapStateToProps= state =>{
     return {
-      currentUser: state.currentUser
+      currentUser: state.currentUser,
+      testCases: state.testCases,
+      source: state.source
     }
   }
 
   const mapDispatchToProps= dispatch =>{
     console.log("dispatch")
     return {
-        changeUsername: user => dispatch(changeUsername(user))
+      onLogin: resp => dispatch(onLogin(resp)),
+      setSources: resp => dispatch(setSources(resp)),
+      setTestCases: resp => dispatch(setTestCases(resp))
     }
   }
 

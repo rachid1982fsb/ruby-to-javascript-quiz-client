@@ -26,22 +26,33 @@ export const getCurrentUser = () => {
 
   
 export const createUser=(data)=>{
-    console.log(data)
-    fetch(contstant.URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-      },
-      body: JSON.stringify({user: data})
-      }).then(function(resp) {
-        if (Math.floor(resp.status/200) === 1) {
-          console.log("Great ")
-        } else {
-          console.log("ERROR", resp)
-        }
-      })
+   return  fetch(contstant.URL, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify({user: data})
+            }).then(function(resp) {
+              if (Math.floor(resp.status/200) === 1) {
+                console.log(resp)
+                return {username: data.username, password: data.username}
+              } else {
+                console.log("ERROR", resp)
+              }
+            })
     }
+
+    export const fetchSource=()=>{
+      return fetch(contstant.URL_SOURCE,{headers})
+            .then(res => res.json())
+            .then(json => {return json})
+          }
+    export const fetchTestCases=()=>{
+      return fetch(contstant.URL_TESTCASES,{headers})
+            .then(res => res.json())
+            .then(json => {return json})
+          }      
 
     export const fetchCompiler=(inCode)=>{
       const headers = { "Content-type": "application/x-www-form-urlencoded"}

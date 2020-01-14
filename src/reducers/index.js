@@ -1,15 +1,26 @@
 const reducer = (state, action) =>{
-    console.log("reducer HERe", action.type)
+    console.log("reducer Here", action.type)
    
     switch(action.type){
-        case "CHANGE_USERNAME":
-            return{
-                currentUser: action.payload
-            }
         case "LOGOUT":
+            return {
+                ...state, currentUser: action.payload,
+                            userExist: false
+             }
+        case "LOGIN":
             return{
-                currentUser: action.payload
+                ...state, currentUser: action.payload,
+                            userExist: true
+             }
+        case "GET_TEST_CASES":
+            return{
+                ...state, testCases: action.payload
+                
             }
+        case "GET_SOURCE":
+            return{
+                ...state , source: action.payload
+            }           
         default:
             return state
     }

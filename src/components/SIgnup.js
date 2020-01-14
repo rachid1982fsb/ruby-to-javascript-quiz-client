@@ -1,8 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import {createUser} from '../services/Api'
+import { NavLink, Redirect } from 'react-router-dom';
+import {login, createUser} from '../services/Api'
 
-import {changeUsername} from '../actions'
+import {onLogin} from '../actions'
 import {connect} from 'react-redux'
 
 
@@ -27,12 +27,21 @@ class Signup extends React.Component{
 
     handleSubmit=(e)=>{
         e.preventDefault()
-        createUser(this.state.newUser)
+        createUser(this.state.newUser).then(res=> login(res)).then(res => {
+            if (!res.error) {
+              console.log(res)
+              this.props.onLogin(res)
+            //   this.props.history.push('/');
+            } else {
+                console.log("eroor")
+              // this.setState({ error: true });
+            }
+          });
     }
 
 
     render(){
-        return(
+        return( this.props.userExist ? <Redirect to ='/'/> :
             <>
             <div className="ui form">
                 <div className="field">
@@ -79,13 +88,14 @@ class Signup extends React.Component{
 }
 const mapStateToProps= state =>{
     return {
-        username: state.username
+        username: state.username,
+        userExist: state.userExist
     }
 }
 
 const mapDispatchToProps= dispatch =>{
     return {
-        changeUsername: username => dispatch(changeUsername(username))
+        onLogin: resp => dispatch(onLogin(resp))
     }
 }
 

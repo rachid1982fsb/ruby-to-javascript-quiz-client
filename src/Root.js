@@ -7,7 +7,7 @@ import Navbar from './components/Navbar.js'
 import About from './components/About'
 import Login from './components/Login'
 import Signup from './components/Signup'
-import Quiz from './components/Quiz'
+import Quiz from './containers/Quiz'
 import Profile from './components/Profile'
 import AnalyzeAlgorithm from './components/AnalyzeAlgorithm'
 

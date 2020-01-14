@@ -1,75 +1,61 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {fetchCompiler} from '../services/Api'
+import SampleTest from './SampleTest'
+import RubyMethod from './RubyMethod'
+
+
+
+
 
 
 
 class Quiz extends React.Component {
 
   state=({
-    compiledCode: "",
-    inputCode: "",
-    methodInput:[1,3,5,6]
+    inputCode: ""
   })
 
-  // componentDidMount(){
-  //   this.fetchCompiler()
-  // }
-  fetchCode= (inCode)=>{
-    fetchCompiler(inCode)
-    .then(res => { this.setState({
-                  compiledCode: res
-                  })
-                console.log(this.state.compiledCode)
-              return this.state.compiledCode
-          })
-    .then(()=> this.handleRunClick() )
-  }
-
- 
 
   handleChange=(e)=>{
     this.setState({
       inputCode: e.target.value
     })
   }
-  handleInputChange=(e)=>{
-    this.setState({
-      methodInput: e.target.value
-    })
-  }
 
-
-  runCode=()=>{
-    let func = new Function("return " + this.state.compiledCode)();
-    let result = func(this.state.methodInput)
-    console.log(result)
-  }
-  
-
-  handleClick=()=>{
-    this.fetchCode(this.state.inputCode)
-  }
-
-  handleRunClick=()=>{
-    this.runCode(this.state.methodInput)
-  }
-
- 
+    // mapTestCases=()=>{
+    //     return  this.props.testCases.map(test => {
+    //      return  <div> {"Test Cases Input: " + test.input + "    Test Cases Output: " + test.output} </div >
+    //     })
+    // }
 
   render() {
-      // this.fetchCompiler()
+      const {source, testCases, onRunClick} = this.props
       const {username} = this.props.currentUser
-    return  <>
-            <p> CompiledCode: {this.state.compiledCode}</p>
-            <textarea name="js_code" cols="50" rows="5" id="method" onChange={this.handleChange}></textarea >
-            Method Input: <input onChange={ this.handleInputChange}/>
-            <button onClick={this.handleClick}>Run</button>
-            <h1>This is my Quiz component! Hello: {username}</h1>
+      console.log(source)
+      console.log(testCases[0])
+return  <>
+              <h3 class="ui left floated header"> Ruby to javascript Quiz </h3>
+
+              <p> CompiledCode: {this.props.compiledCode}</p>
+              <div>
+              <div class="ui special cards">
+              
+                <SampleTest  testCases={testCases}/>
+                
+                </div>
+                <lable>JAVASCRIPT Code Here </lable>
+                <textarea name="js_code" cols="60" rows="15" onChange={this.handleChange}></textarea >
+                <button onClick={() => onRunClick(this.state.inputCode)}> >>  Run >>  </button>
+                <lable>The Method Output</lable>
+                <textarea name="js_code" cols="70" rows="15" value ={"Your Code Output: "+this.props.result}> </textarea >
+              </div>
+            <div>  
+             <button onClick={() => this.props.onRunClick(this.state.inputCode)}>  Submit  >>  </button>
+             <button onClick={() => this.props.onRunClick(this.state.inputCode)}>  Reset >>  </button>
+             <button onClick={() => this.props.onRunClick(this.state.inputCode)}>   Next >>  </button> 
+            </div>
             </>
   }
-
-
 
 }
  
@@ -81,6 +67,115 @@ const mapStateToProps= state =>{
 }
 
 export default connect(mapStateToProps)(Quiz)
+
+
+// <div class="ui clearing segment">
+// <h3 class="ui right floated header">
+//   Wlecome: {username}
+// </h3>
+// <h3 class="ui left floated header">
+//   Ruby to javascript Quiz 
+// </h3>
+// </div>
+// <div class="ui message">
+// <div class="header">
+// Method Name: 
+// </div>
+// <p>Method Discription:</p>
+// </div>
+
+// <div class="ui section divider"></div>
+
+// <p> CompiledCode: {this.props.compiledCode}</p>
+// <div>
+// <lable>Ruby Method</lable>
+//   <div class="ui card">
+//     <div class="image">
+//       <textarea name="js_code" cols="100" rows="15" > </textarea>
+//       <img src="/images/avatar2/large/kristy.png"/>
+//     </div>
+//   </div>
+// <textarea name="js_code" cols="100" rows="15"></textarea>
+// <lable>The Method Output</lable>
+// <textarea name="js_code" cols="70" rows="15" value ={this.props.result}> Result</textarea ><br></br>
+// </div>
+// <div>
+
+
+// import React from 'react';
+// import {connect} from 'react-redux'
+// import {fetchCompiler} from '../services/Api'
+
+
+
+// class Quiz extends React.Component {
+
+//   state=({
+//     compiledCode: "",
+//     inputCode: "",
+//     methodInput:[1,3,5,6]
+//   })
+
+  
+//   fetchCode= (inCode)=>{
+//     fetchCompiler(inCode)
+//     .then(res => { this.setState({
+//                   compiledCode: res
+//                   })
+//                 console.log(this.state.compiledCode)
+//               return this.state.compiledCode
+//           })
+//     .then(()=> this.handleRunClick() )
+//   }
+
+ 
+
+//   handleChange=(e)=>{
+//     this.setState({
+//       inputCode: e.target.value
+//     })
+//   }
+
+
+//   runCode=()=>{
+//     let func = new Function("return " + this.state.compiledCode)();
+//     let result = func(this.state.methodInput)
+//     console.log(result)
+//   }
+  
+
+//   handleClick=()=>{
+//     this.fetchCode(this.state.inputCode)
+//   }
+
+//   handleRunClick=()=>{
+//     this.runCode(this.state.methodInput)
+//   }
+
+ 
+
+//   render() {
+//       const {username} = this.props.currentUser
+//     return  <>
+//             <p> CompiledCode: {this.state.compiledCode}</p>
+//             <textarea name="js_code" cols="50" rows="5" id="method" onChange={this.handleChange}></textarea >
+//             <button onClick={this.handleClick}>Run</button>
+//             <h1>This is my Quiz component! Hello: {username}</h1>
+//             </>
+//   }
+
+
+
+// }
+ 
+
+// const mapStateToProps= state =>{
+//   return {
+//     currentUser: state.currentUser
+//   }
+// }
+
+// export default connect(mapStateToProps)(Quiz)
 
 
 // fetchTest=()=>{
