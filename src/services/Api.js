@@ -43,6 +43,25 @@ export const createUser=(data)=>{
       })
     }
 
+    export const fetchCompiler=(inCode)=>{
+      const headers = { "Content-type": "application/x-www-form-urlencoded"}
+      let formBody = [];
+      let params={
+        js_code: inCode,
+        compilation_level: 'WHITESPACE_ONLY',
+        output_format: 'json',
+        output_info:  'compiled_code'
+         }
+    
+      for (let property in params) {
+            let encodedKey = encodeURIComponent(property);
+            let encodedValue = encodeURIComponent(params[property]);
+            formBody.push(encodedKey + "=" + encodedValue);
+      }
+      return fetch('https://closure-compiler.appspot.com/compile', {method: "POST", headers: headers, body: formBody.join('&')} ).then(res => res.json()).then(json => {
+            
+            return  json.compiledCode})
+    }
 
 
 
