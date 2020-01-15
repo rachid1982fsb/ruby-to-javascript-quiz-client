@@ -37,12 +37,13 @@ class Quiz extends React.Component {
 
   render() {
       const {source, testCases, onRunClick} = this.props
+      const {inputCode} = this.state
       const {username} = this.props.currentUser
       console.log(source)
       console.log(testCases[0])
 return  <>
               <h3 class="ui left floated header"> Ruby to javascript Quiz </h3>
-              <h3 class="ui right floated header"> Wlecome: {username} </h3>
+              <h3 class="ui right floated header"> Welcome: {username} </h3>
 
               <p> CompiledCode: {this.props.compiledCode}</p>
 
@@ -56,15 +57,15 @@ return  <>
                 <lable>JAVASCRIPT Code Here </lable>
               <textarea name="js_code" cols="60" rows="15" onChange={this.handleChange} value={this.state.inputCode}></textarea >
               </div>
-                <button onClick={() => onRunClick(this.state.inputCode)}> >>  Run >>  </button>
+                <button onClick={() => onRunClick(inputCode)}> >>  Run >>  </button>
                 <lable>The Method Output</lable>
                 <textarea name="js_code" cols="70" rows="15" value ={"Your Code Output: "+this.props.result}> </textarea >
               </div>
               </div>
             <div>  
-             <button onClick={() => this.props.onRunClick(this.state.inputCode)}>  Submit  >>  </button>
+             <button onClick={() => this.props.onSubmitClick(inputCode)}>  Submit  >>  </button>
              <button onClick={() => this.handelResetClick()}>  Reset >>  </button>
-             <button onClick={() => this.props.onRunClick(this.state.inputCode)}>   Next >>  </button> 
+             <button onClick={() => this.props.onNextClick()}>   Next >>  </button> 
             </div>
             </>
   }
