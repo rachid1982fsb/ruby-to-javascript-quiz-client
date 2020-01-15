@@ -13,6 +13,7 @@ class Quiz extends React.Component {
     compiledCode: "",
     methodInput: [1,3,5,6],
     result: "",
+    testResult:"",
     testsResult: []
   })
 
@@ -27,7 +28,9 @@ class Quiz extends React.Component {
   }
 
   handelNextClick=()=>{
-    this.populateState()
+     if(this.state.qustion < 3){
+       this.populateState()
+     }
   }
 
   populateState=()=>{
@@ -87,9 +90,11 @@ class Quiz extends React.Component {
   }
 
   render() {
-      const {compiledCode, result, source, testCases}=this.state
+      const {compiledCode, result, source, testCases,testResult}=this.state
       return  <>
+                
                 <QuizComponent onRunClick={this.handleClick} compiledCode={compiledCode} result={result} source={source} testCases={testCases} onSetResult={this.setResult} onSubmitClick={this.handleSubmit} onNextClick={this.handelNextClick}/>
+                <h2>{"Test Result:  "+ testResult}</h2>
               </>
         }
 

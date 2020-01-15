@@ -7,10 +7,10 @@ const RubyMethod=(props)=>{
     
 
     return(
-        <div class="ui card">
-        <lable>Ruby Method</lable>
+        <div class="ui eight wide column">
+        <h5> Ruby Method</h5>
           <div class="image">
-            <img src="" alt="HTML5" style={{width:"400px", height:"200px", borderRadius: 20, padding: 5}}/>
+            <img src={props.url} alt="HTML5" style={{width:"600px", height:"300px", borderRadius: 20, padding: 5}}/>
           </div>
         </div>
        )

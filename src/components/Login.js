@@ -60,13 +60,6 @@ class Login extends React.Component{
                                         </div>
                                 </div>
                                 <div className="field">
-                                    <label>Usernamedisplay</label>
-                                        <div className="ui left icon input">
-                                            <input type="text" placeholder="Username"   value={this.props.username}/>
-                                                <i className="user icon"></i>
-                                        </div>
-                                </div>
-                                <div className="field">
                                     <label>Password</label>
                                     <div className="ui left icon input">
                                         <input type="password" id="password" onChange={this.handelChange}/>

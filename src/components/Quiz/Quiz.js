@@ -29,11 +29,11 @@ class Quiz extends React.Component {
     this.props.onSetResult()
   }
 
-    // mapTestCases=()=>{
-    //     return  this.props.testCases.map(test => {
-    //      return  <div> {"Test Cases Input: " + test.input + "    Test Cases Output: " + test.output} </div >
-    //     })
-    // }
+  handelNextClick=()=>{
+    this.handelResetClick()
+    this.props.onNextClick()
+  }
+
 
   render() {
       const {source, testCases, onRunClick} = this.props
@@ -42,16 +42,20 @@ class Quiz extends React.Component {
       console.log(source)
       console.log(testCases[0])
 return  <>
-              <h3 class="ui left floated header"> Ruby to javascript Quiz </h3>
-              <h3 class="ui right floated header"> Welcome: {username} </h3>
-
-              <p> CompiledCode: {this.props.compiledCode}</p>
-
-              <div>
-              <div class="ui special cards">
-                <RubyMethod  source={source.ruby_method}/>
-                <SampleTest  testCases={testCases}/>
+              <h2 class="ui center aligned header"> Ruby to javascript Quiz </h2><br></br>
+              <div class="ui message">
+                  <div class="header">
+                  Method Name: {source.method_name}
+                  </div>
+                  <p>Method Discription: {source.method_discription}</p>
               </div>
+              <div>
+              <div class="ui grid">
+                <div class="sixteen wide column"></div>
+                <div class="ten wide column"><RubyMethod  url={source.ruby_method}/></div>
+                <div class="six wide column"><SampleTest  testCases={testCases}/></div>
+              </div>
+  
               <div class="ui special cards">
               <div>
                 <lable>JAVASCRIPT Code Here </lable>
@@ -65,7 +69,7 @@ return  <>
             <div>  
              <button onClick={() => this.props.onSubmitClick(inputCode)}>  Submit  >>  </button>
              <button onClick={() => this.handelResetClick()}>  Reset >>  </button>
-             <button onClick={() => this.props.onNextClick()}>   Next >>  </button> 
+             <button onClick={() => this.handelNextClick()}>   Next >>  </button> 
             </div>
             </>
   }
@@ -87,12 +91,12 @@ export default connect(mapStateToProps)(Quiz)
 //   Ruby to javascript Quiz 
 // </h3>
 // </div>
-// <div class="ui message">
-// <div class="header">
-// Method Name: 
-// </div>
-// <p>Method Discription:</p>
-// </div>
+{/* <div class="ui message">
+<div class="header">
+Method Name: 
+</div>
+<p>Method Discription:</p>
+</div> */}
 
 // <div class="ui section divider"></div>
 
