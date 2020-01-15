@@ -4,14 +4,10 @@ import QuizComponent from '../components/Quiz/Quiz'
 import {connect} from 'react-redux'
 
 
-
-
-
-
 class Quiz extends React.Component {
 
   state=({
-    qustion: 1,
+    qustion: 0,
     testCases: [],
     source: {},
     compiledCode: "",
@@ -20,6 +16,9 @@ class Quiz extends React.Component {
     testsResult: []
   })
 
+  componentDidMount(){
+    this.populateState()
+  }
 
   setResult= ()=>{
     this.setState({
@@ -28,9 +27,19 @@ class Quiz extends React.Component {
   }
 
   handelNextClick=()=>{
-    
+    this.populateState()
   }
 
+  populateState=()=>{
+    const {source, testCases}=this.props
+    const {qustion} = this.state
+    let nextQustion = qustion + 1
+    this.setState({
+        qustion: nextQustion,
+        source: source.find(oneCode => oneCode.id === nextQustion),
+        testCases: testCases.filter(testCase => testCase.source_id === nextQustion)
+         })
+  }
 
   handleSubmit=(inCode)=>{
     const {result, testCases, testsResult, methodInput} = this.state
@@ -43,24 +52,9 @@ class Quiz extends React.Component {
       }
     }
     this.setState({testResult: "Test Pass"})
-  }
-
-
-
-  
+  } 
 
   // testCases[0].output
-  componentDidMount(){
-    const {source, testCases}=this.props
-    const {qustion} = this.state
-    this.setState({
-        source: source.find(oneCode => oneCode.id === qustion)
-         })
-    this.setState({
-        testCases: testCases.filter(testCase => testCase.source_id === qustion)
-        })
-  }
-
   fetchCode= (inCode)=>{
     fetchCompiler(inCode)
     .then(res => { this.setState({
@@ -92,8 +86,6 @@ class Quiz extends React.Component {
     return this.fetchCode(inCode)
   }
 
-
-
   render() {
       const {compiledCode, result, source, testCases}=this.state
       return  <>
@@ -111,7 +103,6 @@ const mapStateToProps= state =>{
       testCases: state.testCases
   }
 }
-
 
 
 export default connect(mapStateToProps)(Quiz)
