@@ -22,6 +22,13 @@ class Quiz extends React.Component {
     })
   }
 
+  handelResetClick=()=>{
+    this.setState({
+      inputCode: ""
+    })
+    this.props.onSetResult()
+  }
+
     // mapTestCases=()=>{
     //     return  this.props.testCases.map(test => {
     //      return  <div> {"Test Cases Input: " + test.input + "    Test Cases Output: " + test.output} </div >
@@ -35,23 +42,28 @@ class Quiz extends React.Component {
       console.log(testCases[0])
 return  <>
               <h3 class="ui left floated header"> Ruby to javascript Quiz </h3>
+              <h3 class="ui right floated header"> Wlecome: {username} </h3>
 
               <p> CompiledCode: {this.props.compiledCode}</p>
+
               <div>
               <div class="ui special cards">
-              
+                <RubyMethod  source={source.ruby_method}/>
                 <SampleTest  testCases={testCases}/>
-                
-                </div>
+              </div>
+              <div class="ui special cards">
+              <div>
                 <lable>JAVASCRIPT Code Here </lable>
-                <textarea name="js_code" cols="60" rows="15" onChange={this.handleChange}></textarea >
+              <textarea name="js_code" cols="60" rows="15" onChange={this.handleChange} value={this.state.inputCode}></textarea >
+              </div>
                 <button onClick={() => onRunClick(this.state.inputCode)}> >>  Run >>  </button>
                 <lable>The Method Output</lable>
                 <textarea name="js_code" cols="70" rows="15" value ={"Your Code Output: "+this.props.result}> </textarea >
               </div>
+              </div>
             <div>  
              <button onClick={() => this.props.onRunClick(this.state.inputCode)}>  Submit  >>  </button>
-             <button onClick={() => this.props.onRunClick(this.state.inputCode)}>  Reset >>  </button>
+             <button onClick={() => this.handelResetClick()}>  Reset >>  </button>
              <button onClick={() => this.props.onRunClick(this.state.inputCode)}>   Next >>  </button> 
             </div>
             </>
@@ -70,9 +82,6 @@ export default connect(mapStateToProps)(Quiz)
 
 
 // <div class="ui clearing segment">
-// <h3 class="ui right floated header">
-//   Wlecome: {username}
-// </h3>
 // <h3 class="ui left floated header">
 //   Ruby to javascript Quiz 
 // </h3>

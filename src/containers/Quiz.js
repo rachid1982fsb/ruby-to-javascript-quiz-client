@@ -1,6 +1,6 @@
 import React from 'react';
 import {fetchCompiler, fetchSource, fetchTestCases} from '../services/Api'
-import QuizComponent from '../components/Quiz'
+import QuizComponent from '../components/Quiz/Quiz'
 import {connect} from 'react-redux'
 
 
@@ -20,8 +20,12 @@ class Quiz extends React.Component {
   })
 
 
+  setResult= ()=>{
+    this.setState({
+      result: ""
+    })
+  }
   componentDidMount(){
-    
     const {source, testCases}=this.props
     const {qustion} = this.state
     this.setState({
@@ -52,8 +56,10 @@ class Quiz extends React.Component {
 
   
   runCode=()=>{
-    let func = new Function("return " + this.state.compiledCode)();
-    let result = func(this.state.methodInput)
+    const {compiledCode, methodInput} = this.state
+    console.log(compiledCode)
+    let func = new Function("return " + compiledCode)();
+    let result = compiledCode ? func(methodInput) : "Compiled Error"
     this.setState({
         result: result
     })
@@ -75,7 +81,7 @@ class Quiz extends React.Component {
       const {compiledCode, result,source, testCases}=this.state
      
 return  <>
-            <QuizComponent onRunClick={this.handleClick} compiledCode={compiledCode} result={result} source={source} testCases={testCases}/>
+            <QuizComponent onRunClick={this.handleClick} compiledCode={compiledCode} result={result} source={source} testCases={testCases} onSetResult={this.setResult}/>
             </>
   }
 
