@@ -3,6 +3,8 @@ import {fetchCompiler, fetchSource, fetchTestCases} from '../services/Api'
 import QuizComponent from '../components/Quiz/Quiz'
 import {connect} from 'react-redux'
 import {api_compiler}  from '../services/Compiler'
+import * as contstant from '../contstants/Index'
+
 
 
 
@@ -14,6 +16,9 @@ class Quiz extends React.Component {
     source: {},
     compiledCode: "",
     methodInput: [1,3,5,6],
+    methodName: "test",
+    run_status: {},
+    methodOutput: [3.5,4],
     result: "",
     testResult:"",
     testsResult: []
@@ -30,7 +35,7 @@ class Quiz extends React.Component {
   }
 
   handelNextClick=()=>{
-     if(this.state.qustion < 3){
+     if(this.state.qustion < 5){
        this.populateState()
      }
   }
@@ -40,6 +45,8 @@ class Quiz extends React.Component {
     const {qustion} = this.state
     let nextQustion = qustion + 1
     this.setState({
+        // methodInput: contstant.testInOutput[5].input,
+        // methodOutput: contstant.testInOutput[5].output,
         qustion: nextQustion,
         source: source.find(oneCode => oneCode.id === nextQustion),
         testCases: testCases.filter(testCase => testCase.source_id === nextQustion)
@@ -47,44 +54,48 @@ class Quiz extends React.Component {
   }
 
   handleSubmit=(inCode)=>{
-    const {result, testCases, testsResult, methodInput} = this.state
-    let test =[3.5,4]
+    const {result, methodOutput, testsResult, methodInput} = this.state
+    // let test =[3.5,4]
+    // let input=testCases.map(test => test.input )
+    // let output=testCases.map(test => test.output )
+    // console.log(input,output)
     this.handleClick(inCode)
-    for(let i=0; i<4; i++){
-      testsResult.push(this.runCode(methodInput))
-      if(result.toString() != test.toString() ){
+    // for(let i=0; i<4; i++){
+    //   testsResult.push(this.runCode(input[i].split(",")))
+      if(result.toString() != methodOutput.toString() ){
         return this.setState({testResult: "Test fail"})
       }
-    }
+    // }
     this.setState({testResult: "Test Pass"})
   } 
 
   // testCases[0].output
-  fetchCode= (inCode)=>{
-    fetchCompiler(inCode)
-    .then(res => { this.setState({
-                  compiledCode: res
-                  })
-                // console.log(this.state.compiledCode)
-              return this.state.compiledCode
-          })
-    .then(()=> {
-      // console.log(this.runCode() )
-      return this.runCode(this.state.methodInput) 
-    })
+  fetchCode= (inCode="function ")=>{
+    const {methodName, methodInput}= this.state
+    // inCode, methodName, methodInput
+    console.log( api_compiler())
+    // .then(res => { this.setState({
+    //         run_status: res
+    //               })
+    //             console.log(this.state.run_status)
+    //           return this.state.run_status
+    //       })
+    // .then(()=> {
+    //   return this.runCode(this.state.methodInput) 
+    // })
   }
 
-  runCode=(methodInput)=>{
-    const {compiledCode} = this.state
-    // console.log(compiledCode)
-    let func = new Function("return " + compiledCode)();
-    let result = compiledCode ? func(methodInput) : "Compiled Error"
-    this.setState({
-        result: result
-    })
-    console.log(this.state.result)
-    return this.state.result
-  }
+  // runCode=(methodInput)=>{
+  //   const {compiledCode} = this.state
+  //   // console.log(compiledCode)
+  //   let func = new Function("return " + compiledCode)();
+  //   let result = compiledCode ? func(methodInput) : "Compiled Error"
+    // this.setState({
+    //     result: result
+    // })
+  //   console.log(this.state.result)
+  //   return this.state.result
+  // }
 
   
   handleClick=(inCode)=>{
