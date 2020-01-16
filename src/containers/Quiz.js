@@ -2,6 +2,8 @@ import React from 'react';
 import {fetchCompiler, fetchSource, fetchTestCases} from '../services/Api'
 import QuizComponent from '../components/Quiz/Quiz'
 import {connect} from 'react-redux'
+import {api_compiler}  from '../services/Compiler'
+
 
 
 class Quiz extends React.Component {

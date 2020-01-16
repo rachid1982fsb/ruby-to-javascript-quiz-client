@@ -5,11 +5,11 @@ import React from 'react';
 const SampleTest=(props)=>{
 
     const mapTestCases=()=>{
-        return props.testCases.map(test =>  <div> {"Test Cases Input: " + test.input + "  Output: " + test.output} </div >)
+        return props.testCases.map((test, index) =>  <div key ={index} > {"Test Cases Input: " + test.input + "  Output: " + test.output} </div >)
     }
 
     return(
-        <div class="ui eight wide column">
+        <div className="ui eight wide column">
                 <h5>Sample Tests</h5>
                   <div>
                   {mapTestCases()}
