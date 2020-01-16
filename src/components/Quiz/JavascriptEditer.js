@@ -14,5 +14,4 @@ const JavascriptEditer=(props)=>{
        )
 }
 
-
 export default JavascriptEditer

@@ -42,35 +42,38 @@ class Quiz extends React.Component {
       console.log(source)
       console.log(testCases[0])
 return  <>
-              <h2 class="ui center aligned header"> Ruby to javascript Quiz </h2><br></br>
-              <div class="ui message">
-                  <div class="header">
+              <h2 className="ui center aligned header"> Ruby to javascript Quiz </h2><br></br>
+              <div className="ui message">
+                  <div className="header">
                   Method Name: {source.method_name}
                   </div>
                   <p>Method Discription: {source.method_discription}</p>
               </div>
-              <div>
-              <div class="ui grid">
-                <div class="sixteen wide column"></div>
-                <div class="ten wide column"><RubyMethod  url={source.ruby_method}/></div>
-                <div class="six wide column"><SampleTest  testCases={testCases}/></div>
+             
+              <div className="ui grid">
+                <div className="ten wide column"><RubyMethod  url={source.ruby_method}/></div>
+                <div className="six wide column"><SampleTest  testCases={testCases}/></div>
               </div>
-  
-              <div class="ui special cards">
-              <div>
-                <lable>JAVASCRIPT Code Here </lable>
-              <textarea name="js_code" cols="60" rows="15" onChange={this.handleChange} value={this.state.inputCode}></textarea >
-              </div>
+              <div className="ui grid">
+                <div className="six wide column">
+                  <label>JAVASCRIPT Code Here </label>
+                  <div className="ui input">
+                    <textarea type="text" cols="70" rows="15" placeholder="Write your code here... "  onChange={this.handleChange} value={this.state.inputCode}/>
+                  </div>
+                </div>
                 <button onClick={() => onRunClick(inputCode)}> >>  Run >>  </button>
-                <lable>The Method Output</lable>
-                <textarea name="js_code" cols="70" rows="15" value ={"Your Code Output: "+this.props.result}> </textarea >
+                <div className="six wide column">
+                  <label>The Method Output</label>
+                  <div className="ui input">
+                    <textarea type="text" cols="70" rows="15"  value ={"Your Code Output: "+this.props.result} readOnly={true}/>
+                  </div>
+                </div>
               </div>
+              <div>  
+                <button onClick={() => this.props.onSubmitClick(inputCode)}>  Submit  >>  </button>
+                <button onClick={() => this.handelResetClick()}>  Reset >>  </button>
+                <button onClick={() => this.handelNextClick()}>   Next >>  </button> 
               </div>
-            <div>  
-             <button onClick={() => this.props.onSubmitClick(inputCode)}>  Submit  >>  </button>
-             <button onClick={() => this.handelResetClick()}>  Reset >>  </button>
-             <button onClick={() => this.handelNextClick()}>   Next >>  </button> 
-            </div>
             </>
   }
 
