@@ -33,7 +33,6 @@ export const api_compiler =()=>{
                         //deal with result
                     })
                     .catch((err) => {
-                        // alert(err)
                         console.log("error", err)
                         return err.run_status
                     });
