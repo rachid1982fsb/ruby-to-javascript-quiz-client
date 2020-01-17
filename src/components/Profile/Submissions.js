@@ -18,12 +18,13 @@ class Submissions extends React.Component {
   
   
       return <>
-       <div class="ui grid">
-       <div class="rigth floated column">
+      <div class="column">
                 <div class="ui middle aligned animated list">
+                    <h2>Submissions List</h2>
+
                 <div class="item">
                     <div class="content">
-                    <div class="header" herf="/">Compare the Triplets</div>
+                    <div class="header">Compare the Triplets</div>
                     </div>
                 </div>
                 <div class="item">
@@ -38,7 +39,6 @@ class Submissions extends React.Component {
                 </div>
                 </div>
                 </div>
-     </div>
              </>
     }
   }

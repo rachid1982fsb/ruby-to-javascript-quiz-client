@@ -8,7 +8,7 @@ import About from './components/About'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Quiz from './containers/Backup'
-import Profile from './components/Profile/Profile'
+import Profile from './containers/Profile'
 import AnalyzeAlgorithm from './components/AnalyzeAlgorithm'
 
 
