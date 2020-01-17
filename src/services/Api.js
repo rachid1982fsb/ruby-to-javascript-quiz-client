@@ -24,6 +24,27 @@ export const getCurrentUser = () => {
       return res.json()});
   };
 
+export const saveResult=(userId, sourceId, code)=>{
+  return  fetch(contstant.URL_CORRECT_RESPONSES, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+  },
+  body: JSON.stringify({
+    user_id: userId,
+    source_id: sourceId,
+    javascript_code: code
+  })
+  }).then(function(resp) {
+    if (Math.floor(resp.status/200) === 1) {
+      console.log("saved rachid", resp)
+    } else {
+      console.log("ERROR", resp)
+    }
+  })
+}
+
   
 export const createUser=(data)=>{
    return  fetch(contstant.URL, {

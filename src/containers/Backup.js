@@ -1,5 +1,5 @@
 import React from 'react';
-import {fetchCompiler, fetchSource, fetchTestCases} from '../services/Api'
+import {fetchCompiler, saveResult} from '../services/Api'
 import QuizComponent from '../components/Quiz/Quiz'
 import {connect} from 'react-redux'
 import {api_compiler}  from '../services/Compiler'
@@ -52,25 +52,31 @@ class Quiz extends React.Component {
   }
 
   handleSubmit=(inCode)=>{
-    const {result, methodOutput, testsResult, methodInput,testCases} = this.state
+    const {result, methodOutput, testsResult, methodInput,testCases, source} = this.state
+    const {currentUser}= this.props
     // let input=testCases.map(test => test.input )
     // let output=testCases.map(test => test.output )
     // console.log(input,output)
     this.handleClick(inCode)
     // for(let i=0; i<4; i++){
     //   testsResult.push(this.runCode(input[i].split(",")))
-      if(result.toString() != testCases[0].output.toString() ){
-        return this.setState({testResult: "Test fail"})
+    if(result.toString() === testCases[0].output.toString() ){
+        this.setState({testResult: "Test Pass"})
+       if (currentUser.id ){
+         console.log("will save")
+         saveResult(currentUser.id, source.id,inCode)
+       }
+      }else{
+        this.setState({testResult: "Test Fail"})
       }
     // }
-    this.setState({testResult: "Test Pass"})
+    
   } 
 
   // testCases[0].output
   fetchCode= (inCode="function ")=>{
     const {methodName, methodInput, source, testCases}= this.state
     let code= inCode + source.name + "("+testCases[0].input +")"
-    console.log(code)
     // console.log(inCode)
     // inCode, methodName, methodInput
     // console.log( api_compiler())
@@ -78,7 +84,6 @@ class Quiz extends React.Component {
     .then(res => { this.setState({
         compiledCode: res
                   })
-                console.log(this.state.compiledCode)
               return this.state.compiledCode
           })
     .then(()=> {
@@ -88,13 +93,11 @@ class Quiz extends React.Component {
 
   runCode=()=>{
     const {compiledCode} = this.state
-    console.log(compiledCode)
     let func = eval(compiledCode);
     let result = func ? func : "Compiled Error"
     this.setState({
         result: result
     })
-    console.log(this.state.result)
     return this.state.result
   }
   

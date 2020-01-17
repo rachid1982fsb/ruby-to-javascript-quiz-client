@@ -62,11 +62,11 @@ class Quiz extends React.Component {
     this.handleClick(inCode)
     // for(let i=0; i<4; i++){
     //   testsResult.push(this.runCode(input[i].split(",")))
-      if(result.toString() != methodOutput.toString() ){
-        return this.setState({testResult: "Test fail"})
+      if(result.toString() === methodOutput.toString() ){
+        return this.setState({testResult: "Test Pass"})
       }
     // }
-    this.setState({testResult: "Test Pass"})
+    this.setState({testResult: "Test Fail"})
   } 
 
   // testCases[0].output

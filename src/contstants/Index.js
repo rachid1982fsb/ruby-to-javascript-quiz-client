@@ -10,6 +10,7 @@ export const Link = {
   }
 export const URL="http://127.0.0.1:3000/users"
 export const URL_SOURCE="http://127.0.0.1:3000/sources"
+export const URL_CORRECT_RESPONSES="http://127.0.0.1:3000/correct_responses"
 export const URL_TESTCASES="http://127.0.0.1:3000/test_cases"
 export const AUTH_URL="http://127.0.0.1:3000/auth"
 export const CURRENT_USER_URL="http://127.0.0.1:3000/current_user"
