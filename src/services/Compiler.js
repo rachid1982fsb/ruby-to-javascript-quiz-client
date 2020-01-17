@@ -16,6 +16,7 @@ config.memory_limit = 323244;
 config.input = "";
 
 config.language= "JAVASCRIPT";
+
 // input,methodName,methodInput
 export const api_compiler =()=>{
 
@@ -33,9 +34,31 @@ export const api_compiler =()=>{
                         //deal with result
                     })
                     .catch((err) => {
-                        console.log("error", err)
+                        console.log("HAckerEarth Compiler Catch error", err)
                         return err.run_status
                     });
 } 
+
+//  const api_compiler =()=>{
+
+//     const input= "function hello(arr,s,ar2) {return (arr[1]+ ' Hello, ' + ar2[1]*arr[0]+ '  ' + s); }"
+//     const methodName="hello"
+//     const methodInput= "[5,3,'String in Array'], 'Im string ', ['a',23]"
+
+//     config.source = input + "print("+ methodName+"("+methodInput+"))";
+
+//     hackerEarth.run(config)
+//                     .then((result) => {
+//                         // alert("result.run_status")
+//                         console.log("result", JSON.parse(result))
+//                         return result.run_status
+//                         //deal with result
+//                     })
+//                     .catch((err) => {
+//                         console.log("this is the error ", err)
+//                         return err.run_status
+//                     });
+// } 
+
 // api_compiler()
 

@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import * as contstant from './contstants/Index'
 import './App.css';
 import Login from './components/Login'
-import Quiz from './containers/Quiz'
+import Quiz from './containers/Backup'
 import {getCurrentUser} from './services/Api'
 import {onLogin, setSources, setTestCases} from './actions'
 import {fetchSource, fetchTestCases} from './services/Api'

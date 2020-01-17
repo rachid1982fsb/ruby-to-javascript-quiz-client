@@ -32,16 +32,15 @@ class Quiz extends React.Component {
   handelNextClick=()=>{
     this.handelResetClick()
     this.props.onNextClick()
+    this.props.onSetResult()
   }
-
 
   render() {
       const {source, testCases, onRunClick} = this.props
       const {inputCode} = this.state
       const {username} = this.props.currentUser
-      console.log(source)
-      console.log(testCases[0])
-return  <>
+    
+      return  <>
               <h2 className="ui center aligned header"> Ruby to javascript Quiz </h2><br></br>
               <div className="ui message">
                   <div className="header">
@@ -55,24 +54,27 @@ return  <>
                 <div className="six wide column"><SampleTest  testCases={testCases}/></div>
               </div>
               <div className="ui grid">
-                <div className="six wide column">
-                  <label>JAVASCRIPT Code Here </label>
-                  <div className="ui input">
-                    <textarea type="text" cols="70" rows="15" placeholder="Write your code here... "  onChange={this.handleChange} value={this.state.inputCode}/>
+                <div class="ui form eight wide column">
+                  <div class="field">
+                    <label>JAVASCRIPT Code Here use the method name:  {source.name}</label>
+                    <textarea rows="20" placeholder="Write your code here... "  onChange={this.handleChange} value={this.state.inputCode}/>
                   </div>
                 </div>
-                <button onClick={() => onRunClick(inputCode)}> >>  Run >>  </button>
-                <div className="six wide column">
-                  <label>The Method Output</label>
-                  <div className="ui input">
-                    <textarea type="text" cols="70" rows="15"  value ={"Your Code Output: "+this.props.result} readOnly={true}/>
-                  </div>
+                <div class="ui form six wide column">
+                    <div class="field">
+                      <label>The Method Output</label>
+                      <textarea rows="20" placeholder="Code Output:..." value ={this.props.result} readOnly={true}></textarea>
+                    </div>
                 </div>
-              </div>
+                </div>
+              
+              <div class="ui divider"></div>
               <div>  
-                <button onClick={() => this.props.onSubmitClick(inputCode)}>  Submit  >>  </button>
-                <button onClick={() => this.handelResetClick()}>  Reset >>  </button>
-                <button onClick={() => this.handelNextClick()}>   Next >>  </button> 
+                <button class="ui primary button" onClick={() => this.props.onSubmitClick(inputCode)}>Submit Code</button>
+                <button class="ui left floated button" onClick={() => this.handelResetClick()}>Reset</button>
+                <button class="ui right labeled icon right floated button" onClick={() => this.handelNextClick()}><i class="right arrow icon"></i> Next</button>
+                <button class="ui right floated primary button" onClick={() => onRunClick(inputCode)}> Run Code </button>
+
               </div>
             </>
   }

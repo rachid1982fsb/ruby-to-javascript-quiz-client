@@ -15,10 +15,8 @@ class Quiz extends React.Component {
     testCases: [],
     source: {},
     compiledCode: "",
-    methodInput: [1,3,5,6],
     methodName: "test",
     run_status: {},
-    methodOutput: [3.5,4],
     result: "",
     testResult:"",
     testsResult: []
@@ -35,7 +33,7 @@ class Quiz extends React.Component {
   }
 
   handelNextClick=()=>{
-     if(this.state.qustion < 5){
+     if(this.state.qustion < 2){
        this.populateState()
      }
   }
@@ -54,15 +52,14 @@ class Quiz extends React.Component {
   }
 
   handleSubmit=(inCode)=>{
-    const {result, methodOutput, testsResult, methodInput} = this.state
-    // let test =[3.5,4]
+    const {result, methodOutput, testsResult, methodInput,testCases} = this.state
     // let input=testCases.map(test => test.input )
     // let output=testCases.map(test => test.output )
     // console.log(input,output)
     this.handleClick(inCode)
     // for(let i=0; i<4; i++){
     //   testsResult.push(this.runCode(input[i].split(",")))
-      if(result.toString() != methodOutput.toString() ){
+      if(result.toString() != testCases[0].output.toString() ){
         return this.setState({testResult: "Test fail"})
       }
     // }
@@ -71,32 +68,35 @@ class Quiz extends React.Component {
 
   // testCases[0].output
   fetchCode= (inCode="function ")=>{
-    const {methodName, methodInput}= this.state
+    const {methodName, methodInput, source, testCases}= this.state
+    let code= inCode + source.name + "("+testCases[0].input +")"
+    console.log(code)
+    // console.log(inCode)
     // inCode, methodName, methodInput
-    console.log( api_compiler())
-    // .then(res => { this.setState({
-    //         run_status: res
-    //               })
-    //             console.log(this.state.run_status)
-    //           return this.state.run_status
-    //       })
-    // .then(()=> {
-    //   return this.runCode(this.state.methodInput) 
-    // })
+    // console.log( api_compiler())
+    fetchCompiler(code)
+    .then(res => { this.setState({
+        compiledCode: res
+                  })
+                console.log(this.state.compiledCode)
+              return this.state.compiledCode
+          })
+    .then(()=> {
+      return this.runCode() 
+    })
   }
 
-  runCode=(methodInput)=>{
+  runCode=()=>{
     const {compiledCode} = this.state
-    // console.log(compiledCode)
-    let func = new Function("return " + compiledCode)();
-    let result = compiledCode ? func(methodInput) : "Compiled Error"
+    console.log(compiledCode)
+    let func = eval(compiledCode);
+    let result = func ? func : "Compiled Error"
     this.setState({
         result: result
     })
     console.log(this.state.result)
     return this.state.result
   }
-
   
   handleClick=(inCode)=>{
     return this.fetchCode(inCode)
@@ -104,8 +104,8 @@ class Quiz extends React.Component {
 
   render() {
       const {compiledCode, result, source, testCases,testResult}=this.state
+
       return  <>
-                
                 <QuizComponent onRunClick={this.handleClick} compiledCode={compiledCode} result={result} source={source} testCases={testCases} onSetResult={this.setResult} onSubmitClick={this.handleSubmit} onNextClick={this.handelNextClick}/>
                 <h2>{"Test Result:  "+ testResult}</h2>
               </>

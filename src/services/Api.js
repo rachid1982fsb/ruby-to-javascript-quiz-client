@@ -69,9 +69,10 @@ export const createUser=(data)=>{
             let encodedValue = encodeURIComponent(params[property]);
             formBody.push(encodedKey + "=" + encodedValue);
       }
-      return fetch('https://closure-compiler.appspot.com/compile', {method: "POST", headers: headers, body: formBody.join('&')} ).then(res => res.json()).then(json => {
-            
-            return  json.compiledCode})
+      return fetch('https://closure-compiler.appspot.com/compile', {method: "POST", headers: headers, body: formBody.join('&')} )
+                .then(res => res.json())
+                .then(json => {
+                      return  json.compiledCode})
     }
 
 
