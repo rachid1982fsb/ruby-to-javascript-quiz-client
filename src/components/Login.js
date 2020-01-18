@@ -1,9 +1,9 @@
 import React from 'react';
-import {onLogin} from '../actions'
+import {onLogin, setCorrectResponses} from '../actions'
 import {connect} from 'react-redux'
 import { NavLink } from 'react-router-dom';
 
-import {login} from '../services/Api'
+import {login,fetchCorrectResponses} from '../services/Api'
 
 
 
@@ -28,6 +28,7 @@ class Login extends React.Component{
           if (!res.error) {
             console.log(res)
             this.props.onLogin(res);
+            fetchCorrectResponses(res.id).then(res => this.props.setCorrectResponses(res));
             // this.props.history.push('/');
           } else {
               console.log("eroor")
@@ -97,7 +98,8 @@ const mapStateToProps= state =>{
 
 const mapDispatchToProps= dispatch =>{
     return {
-        onLogin: resp => dispatch(onLogin(resp))
+        onLogin: resp => dispatch(onLogin(resp)),
+        setCorrectResponses: resp => dispatch(setCorrectResponses(resp))
     }
 }
 

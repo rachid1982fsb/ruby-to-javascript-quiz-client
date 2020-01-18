@@ -56,14 +56,14 @@ class Quiz extends React.Component {
               <div className="ui grid">
                 <div class="ui form eight wide column">
                   <div class="field">
-                    <label>JAVASCRIPT Code Here use the method name:  {source.name}</label>
-                    <textarea rows="20" placeholder="Write your code here... "  onChange={this.handleChange} value={this.state.inputCode}/>
+                    <label>Write JAVASCRIPT Code Here. use the method name:"{source.name}"</label>
+                    <textarea rows="20" placeholder="Write your code here... "  onChange={this.handleChange} defaultValue={"function "+source.name+"()"} value={this.state.inputCode}/>
                   </div>
                 </div>
                 <div class="ui form six wide column">
                     <div class="field">
                       <label>The Method Output</label>
-                      <textarea rows="20" placeholder="Code Output:..." value ={this.props.result} readOnly={true}></textarea>
+                      <textarea rows="20" placeholder="Code Output:..." value ={this.props.result} readOnly={true}>{this.props.result} </textarea>
                     </div>
                 </div>
                 </div>

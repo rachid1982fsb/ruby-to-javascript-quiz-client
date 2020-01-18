@@ -20,6 +20,10 @@ const reducer = (state, action) =>{
         case "GET_SOURCE":
             return{
                 ...state , source: action.payload
+            }
+        case "GET_CORRECT_RESPONSES":
+            return{
+                ...state , correctResponses: action.payload
             }           
         default:
             return state

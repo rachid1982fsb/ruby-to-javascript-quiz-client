@@ -29,3 +29,10 @@ export const setTestCases =(testCases) =>{
     }
 }
 
+export const setCorrectResponses =(correctResponses) =>{
+    return{
+        type: "GET_CORRECT_RESPONSES",
+        payload: correctResponses
+    }
+}
+

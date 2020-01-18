@@ -5,7 +5,7 @@ import React from 'react';
 const SampleTest=(props)=>{
 
     const mapTestCases=()=>{
-        return props.testCases.map((test, index) =>  <div key ={index} > {"Test Cases Input: " + test.input + "  Output: " + test.output} </div >)
+        return props.testCases.map((test, index) =>  <div key ={index} > {"Test Cases Input =>  " + test.input + "  Output =>  // " + test.output} </div >)
     }
 
     return(

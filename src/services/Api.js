@@ -64,18 +64,28 @@ export const createUser=(data)=>{
             })
     }
 
-    export const fetchSource=()=>{
+export const fetchSource=()=>{
       return fetch(contstant.URL_SOURCE,{headers})
             .then(res => res.json())
             .then(json => {return json})
           }
-    export const fetchTestCases=()=>{
+
+export const fetchTestCases=()=>{
       return fetch(contstant.URL_TESTCASES,{headers})
             .then(res => res.json())
             .then(json => {return json})
-          }      
+          }  
 
-    export const fetchCompiler=(inCode)=>{
+
+export const fetchCorrectResponses=()=>{
+   return fetch(contstant.URL_CORRECT_RESPONSES,{headers})
+        .then(res => res.json())
+        .then(json => {
+          console.log("Fetch fetchCorrectResponses ",json)
+          return json})
+          }    
+
+export const fetchCompiler=(inCode)=>{
       const headers = { "Content-type": "application/x-www-form-urlencoded"}
       let formBody = [];
       let params={
@@ -84,13 +94,12 @@ export const createUser=(data)=>{
         output_format: 'json',
         output_info:  'compiled_code'
          }
-    
       for (let property in params) {
-            let encodedKey = encodeURIComponent(property);
-            let encodedValue = encodeURIComponent(params[property]);
-            formBody.push(encodedKey + "=" + encodedValue);
-      }
-      return fetch('https://closure-compiler.appspot.com/compile', {method: "POST", headers: headers, body: formBody.join('&')} )
+              let encodedKey = encodeURIComponent(property);
+              let encodedValue = encodeURIComponent(params[property]);
+              formBody.push(encodedKey + "=" + encodedValue);
+        }
+    return fetch('https://closure-compiler.appspot.com/compile', {method: "POST", headers: headers, body: formBody.join('&')} )
                 .then(res => res.json())
                 .then(json => {
                       return  json.compiledCode})
