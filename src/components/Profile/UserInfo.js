@@ -4,14 +4,13 @@ class UserInfo extends React.Component {
 
 
   render() {
-
-
+    const {user}=this.props
     return <>
             <div class="column">
                 <ul>
-                      <li> Name: </li>
-                      <li> UserName: </li>
-                      <li> Email: </li>
+                      <li> Name: {user.name} </li>
+                      <li> UserName: {user.username}</li>
+                      <li> Email: {user.email} </li>
                 </ul>
               </div>
            </>

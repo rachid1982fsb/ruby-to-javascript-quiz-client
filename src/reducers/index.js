@@ -5,7 +5,8 @@ const reducer = (state, action) =>{
         case "LOGOUT":
             return {
                 ...state, currentUser: action.payload,
-                            userExist: false
+                          correctResponses: action.payload,
+                          userExist: false
              }
         case "LOGIN":
             return{
