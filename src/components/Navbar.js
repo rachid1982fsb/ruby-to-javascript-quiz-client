@@ -39,7 +39,7 @@ import {logout} from '../actions'
           {/* <NavLink to="/login" exact  className="item"> {contstant.token ? "LogOut": "Login"} </NavLink> */}
           <NavLink to="/quiz" exact  className="item"> Quiz </NavLink>
           <NavLink to="/profile" exact  className="item"> Profile </NavLink>
-          <NavLink to="/analyzeAlgorithm" exact  className="item"> Analyze Algorithm </NavLink>
+          <NavLink to="/analyzeAlgorithm" exact  className="item"> Algorithm </NavLink>
           <NavLink to="/about" exact  className="item"> About </NavLink>
         </div>
       )

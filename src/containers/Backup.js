@@ -11,7 +11,7 @@ import * as contstant from '../contstants/Index'
 class Quiz extends React.Component {
 
   state=({
-    qustion: 0,
+    qustion: -1,
     testCases: [],
     source: {},
     compiledCode: "",
@@ -33,19 +33,45 @@ class Quiz extends React.Component {
   }
 
   handelNextClick=()=>{
-     if(this.state.qustion < 5){
+    const numberOfQustions = this.remainQuestions().length -1
+     if(this.state.qustion < numberOfQustions){
        this.populateState()
      }
   }
 
+  remainQuestions=()=>{
+    const {currentUser, source, correctResponses}= this.props
+    let array=[]
+    const qustions = source.map(qustion => qustion.id )
+    let answered =[]
+    if(currentUser.id){
+      console.log("correctResponses", correctResponses)
+       correctResponses.forEach(qustion => {
+            if(qustion.user_id === currentUser.id){
+              answered.push(qustion.source.id)
+            }}
+          )
+      console.log("answered", answered)
+      qustions.forEach(q => {
+        if(!answered.includes(q)){
+          array.push(q)
+        }
+      } )
+    }else{
+      array = qustions
+    }
+    return array
+  }
+
+
   populateState=()=>{
     const {source, testCases}=this.props
     const {qustion} = this.state
-    let nextQustion = qustion + 1
+    let nextQustion = this.remainQuestions()[qustion + 1]
     this.setState({
         // methodInput: contstant.testInOutput[5].input,
         // methodOutput: contstant.testInOutput[5].output,
-        qustion: nextQustion,
+        qustion: qustion + 1,
         source: source.find(oneCode => oneCode.id === nextQustion),
         testCases: testCases.filter(testCase => testCase.source_id === nextQustion)
          })
@@ -121,7 +147,8 @@ const mapStateToProps= state =>{
   return {
       currentUser: state.currentUser,
       source: state.source,
-      testCases: state.testCases
+      testCases: state.testCases,
+      correctResponses: state.correctResponses
   }
 }
 

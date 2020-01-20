@@ -11,7 +11,10 @@ import * as serviceWorker from './serviceWorker';
 
 
 const initialState = {
-    currentUser: {}
+    currentUser: {},
+    correctResponses: [],
+    source: [],
+    testCases: []
 }
 
 const store = createStore(reducer, initialState)

@@ -1,9 +1,9 @@
 import React from 'react';
-import {onLogin, setCorrectResponses} from '../actions'
+import {onLogin, setCorrectResponses,setUserAlgorithms} from '../actions'
 import {connect} from 'react-redux'
 import { NavLink } from 'react-router-dom';
 
-import {login,fetchCorrectResponses} from '../services/Api'
+import {login,fetchCorrectResponses,fetchUserAlgorithms} from '../services/Api'
 
 
 
@@ -29,6 +29,7 @@ class Login extends React.Component{
             console.log(res)
             this.props.onLogin(res);
             fetchCorrectResponses(res.id).then(res => this.props.setCorrectResponses(res));
+            fetchUserAlgorithms(res.id).then(res => this.props.setCorrectResponses(res));
             // this.props.history.push('/');
           } else {
               console.log("eroor")

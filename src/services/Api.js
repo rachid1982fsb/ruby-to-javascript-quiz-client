@@ -45,7 +45,28 @@ export const saveResult=(userId, sourceId, code)=>{
   })
 }
 
-  
+export const saveAlgorithm=(field, user_id)=>{
+  return  fetch(contstant.USER_ALGORITHM_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+  },
+  body: JSON.stringify({
+    user_id: user_id,
+    name: field.methodName,
+    discription: field.discription,
+    javascript_code: field.code
+   })
+  }).then(function(resp) {
+    if (Math.floor(resp.status/200) === 1) {
+      console.log("saved rachid", resp)
+    } else {
+      console.log("ERROR", resp)
+    }
+  })
+}
+
 export const createUser=(data)=>{
    return  fetch(contstant.URL, {
               method: "POST",
@@ -83,7 +104,16 @@ export const fetchCorrectResponses=()=>{
         .then(json => {
           console.log("Fetch fetchCorrectResponses ",json)
           return json})
-          }    
+          }  
+          
+export const fetchUserAlgorithms=()=>{
+    return fetch(contstant.USER_ALGORITHM_URL,{headers})
+         .then(res => res.json())
+         .then(json => {
+         console.log("Fetch fetchUserAlgorithms ",json)
+          return json})
+          }  
+
 
 export const fetchCompiler=(inCode)=>{
       const headers = { "Content-type": "application/x-www-form-urlencoded"}
