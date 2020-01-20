@@ -33,7 +33,7 @@ class Quiz extends React.Component {
   }
 
   handelNextClick=()=>{
-     if(this.state.qustion < 2){
+     if(this.state.qustion < 5){
        this.populateState()
      }
   }

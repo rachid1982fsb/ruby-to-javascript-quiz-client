@@ -1,44 +1,40 @@
 import React from 'react';
-
+import ModalAnswer from './ModalAnswer'
 
 
 class Submissions extends React.Component {
+    
+    state=({
+        show: false,
+        answer: ""
+
+    })
 
 
     mapMethodsName=()=>{
         return this.props.correctResponses.map((answer,index) => <div class="item" key={index}>
                                                             <i class="linkify icon"></i>
                                                             <div class="content">
+                                                                {console.log(answer.javascript_code)}
                                                             <div class="header" onClick={()=> this.showAnswer(answer.javascript_code)} ><a>{answer.source.method_name}</a></div>
                                                             </div>
                                                          </div>)
     }
 
-    showAnswer=(code)=>{
-        return (
-            <div class="ui modal">
-                <div class="header">Header</div>
-                <div class="scrolling content">
-                <p>Very long content goes here</p>
-                </div>
-            </div>
-        )
-            
+    showAnswer=(code)=> {
+        this.setState({
+            show: !this.state.show,
+            answer: code
+        })
     }
-
-
-
-
-
-    
 
 
     render() {
   
-  
+  const {show, answer}= this.state
       return <>
-      <div class="column">
-                <div class="ui middle aligned animated list">
+               <div class="column">
+                <div class="ui list">
                     <h2>Submissions List</h2>
                 {this.mapMethodsName()}
                 <div class="item">
@@ -58,6 +54,7 @@ class Submissions extends React.Component {
                 </div>
                 </div>
                 </div>
+                <ModalAnswer show={show} answer={answer}/>
              </>
     }
   }

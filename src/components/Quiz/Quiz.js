@@ -4,11 +4,6 @@ import SampleTest from './SampleTest'
 import RubyMethod from './RubyMethod'
 
 
-
-
-
-
-
 class Quiz extends React.Component {
 
   state=({

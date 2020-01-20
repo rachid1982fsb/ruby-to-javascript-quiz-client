@@ -1,6 +1,7 @@
 
 
 export const logout =()=>{
+    console.log("remove Token")
     localStorage.removeItem('token');
     return {
         type: "LOGOUT",
