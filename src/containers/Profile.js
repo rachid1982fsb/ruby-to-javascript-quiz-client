@@ -28,8 +28,8 @@ class Profile extends React.Component {
             <h1>This is my Profile component!</h1>
             <div class="ui vertically divided grid">
               <div class="two column row">
-                <UserInfo user={user}/>
                 <Submissions correctResponses={correctResponses}/>
+                <UserInfo user={user}/>
               </div>
               </div>
            </>
