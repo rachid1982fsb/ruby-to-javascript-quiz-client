@@ -101,26 +101,36 @@ class Quiz extends React.Component {
 
   // testCases[0].output
   fetchCode= (inCode="function ")=>{
+    
     const {methodName, methodInput, source, testCases}= this.state
     let code= inCode + source.name + "("+testCases[0].input +")"
+    this.runCode(code) 
     // console.log(inCode)
     // inCode, methodName, methodInput
     // console.log( api_compiler())
-    fetchCompiler(code)
-    .then(res => { this.setState({
-        compiledCode: res
-                  })
-              return this.state.compiledCode
-          })
-    .then(()=> {
-      return this.runCode() 
-    })
+    // fetchCompiler(code)
+    // .then(res => { this.setState({
+    //     compiledCode: res
+    //               })
+    //           return this.state.compiledCode
+    //       })
+    // .then(()=> {
+    //   return this.runCode() 
+    // })
   }
 
-  runCode=()=>{
+  runCode=(code)=>{
     const {compiledCode} = this.state
-    let func = eval(compiledCode);
-    let result = func ? func : "Compiled Error"
+    // let func = eval(compiledCode);
+    let func 
+    let funcError=''
+    // let func = eval(compiledCode);
+    try {
+       func = eval(code);
+    } catch (e) {
+      funcError = e;
+    }
+    let result = func ? func : funcError
     this.setState({
         result: result
     })

@@ -25,10 +25,18 @@ handelChange=(e)=>{
 
 
 runCode=()=>{
-  const {compiledCode} = this.state.fields
-  let func = eval(compiledCode);
-  console.log("func",func)
-  let result = func ? func : "Compiled Error"
+  const {code} = this.state.fields
+  let func 
+  let funcError=""
+  // let func = eval(compiledCode);
+  try {
+     func = eval(code);
+  } catch (e) {
+    console.log("error",e)
+    funcError = e;
+  }
+  // console.log("func",func)
+  let result = func ? func : funcError
   const newFields = { ...this.state.fields, result: result};
   this.setState({
     fields: newFields
@@ -36,18 +44,19 @@ runCode=()=>{
 }
 
 handleRunClick=(code)=>{
-  console.log(code)
-  fetchCompiler(code)
-  .then(res => { 
-    const newFields = { ...this.state.fields, compiledCode: res};
-    this.setState({
-      fields: newFields
-                })
-            return this.state.fields.compiledCode
-        })
-  .then(()=> {
-    return this.runCode() 
-  })
+  this.runCode() 
+  // console.log(code)
+  // fetchCompiler(code)
+  // .then(res => { 
+  //   const newFields = { ...this.state.fields, compiledCode: res};
+  //   this.setState({
+  //     fields: newFields
+  //               })
+  //           return this.state.fields.compiledCode
+  //       })
+  // .then(()=> {
+  //   return this.runCode() 
+  // })
 }
 
 
