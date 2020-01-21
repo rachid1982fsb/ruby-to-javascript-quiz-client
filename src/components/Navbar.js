@@ -40,6 +40,7 @@ import {logout} from '../actions'
           <NavLink to="/quiz" exact  className="item"> Quiz </NavLink>
           <NavLink to="/profile" exact  className="item"> Profile </NavLink>
           <NavLink to="/analyzeAlgorithm" exact  className="item"> Algorithm </NavLink>
+          <NavLink to="/admin" exact  className="item"> Admin </NavLink>
           <NavLink to="/about" exact  className="item"> About </NavLink>
         </div>
       )

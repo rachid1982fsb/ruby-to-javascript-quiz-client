@@ -6,8 +6,8 @@ import './App.css';
 import Login from './components/Login'
 import Quiz from './containers/Quiz'
 import {getCurrentUser} from './services/Api'
-import {onLogin, setSources, setTestCases, setCorrectResponses} from './actions'
-import {fetchSource, fetchTestCases,fetchCorrectResponses} from './services/Api'
+import {onLogin, setSources, setTestCases, setCorrectResponses,setUserAlgorithms} from './actions'
+import {fetchSource, fetchTestCases,fetchCorrectResponses,fetchUserAlgorithms} from './services/Api'
 
 
 
@@ -19,11 +19,9 @@ class App extends React.Component {
     fetchTestCases().then(res => this.props.setTestCases(res))
     if (contstant.token) {
       console.log('there is a token');
-      // make a request to the backend and find our user
-       getCurrentUser().then(user => {
-        this.props.onLogin(user)
-        fetchCorrectResponses(user.id).then(res => this.props.setCorrectResponses(res))
-      });
+      fetchUserAlgorithms().then(res => this.props.setUserAlgorithms(res))
+      fetchCorrectResponses().then(res => this.props.setCorrectResponses(res))
+      getCurrentUser().then(user => this.props.onLogin(user));
     }
   }
 
@@ -42,7 +40,8 @@ class App extends React.Component {
       currentUser: state.currentUser,
       testCases: state.testCases,
       source: state.source,
-      correctResponses: state.correctResponses
+      correctResponses: state.correctResponses,
+      userAlgorithms: state.userAlgorithms
     }
   }
 
@@ -52,7 +51,9 @@ class App extends React.Component {
       onLogin: resp => dispatch(onLogin(resp)),
       setSources: resp => dispatch(setSources(resp)),
       setTestCases: resp => dispatch(setTestCases(resp)),
+      setUserAlgorithms: resp => dispatch(setUserAlgorithms(resp)),
       setCorrectResponses: resp => dispatch(setCorrectResponses(resp))
+      
 
     }
   }

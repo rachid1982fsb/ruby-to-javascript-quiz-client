@@ -13,18 +13,22 @@ const reducer = (state, action) =>{
                 ...state, currentUser: action.payload,
                             userExist: true
              }
-        case "GET_TEST_CASES":
+        case "SET_TEST_CASES":
             return{
                 ...state, testCases: action.payload
                 
             }
-        case "GET_SOURCE":
+        case "SET_SOURCE":
             return{
                 ...state , source: action.payload
             }
-        case "GET_CORRECT_RESPONSES":
+        case "SET_CORRECT_RESPONSES":
             return{
                 ...state , correctResponses: action.payload
+            } 
+        case "SET_USER_ALGORITHMS":
+            return{
+                ...state , userAlgorithms: action.payload
             }           
         default:
             return state

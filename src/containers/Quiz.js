@@ -45,7 +45,6 @@ class Quiz extends React.Component {
     const qustions = source.map(qustion => qustion.id )
     let answered =[]
     if(currentUser.id){
-      console.log("correctResponses", correctResponses)
        correctResponses.forEach(qustion => {
             if(qustion.user_id === currentUser.id){
               answered.push(qustion.source.id)

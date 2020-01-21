@@ -18,22 +18,29 @@ export const onLogin =(data)=>{
 
 export const setSources =(source) =>{
     return{
-        type: "GET_SOURCE",
+        type: "SET_SOURCE",
         payload: source
     }
 }
 
 export const setTestCases =(testCases) =>{
     return{
-        type: "GET_TEST_CASES",
+        type: "SET_TEST_CASES",
         payload: testCases
     }
 }
 
 export const setCorrectResponses =(correctResponses) =>{
     return{
-        type: "GET_CORRECT_RESPONSES",
+        type: "SET_CORRECT_RESPONSES",
         payload: correctResponses
+    }
+}
+
+export const setUserAlgorithms =(userAlgorithms) =>{
+    return{
+        type: "SET_USER_ALGORITHMS",
+        payload: userAlgorithms
     }
 }
 

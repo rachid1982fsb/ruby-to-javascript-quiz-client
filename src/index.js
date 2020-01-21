@@ -13,6 +13,7 @@ import * as serviceWorker from './serviceWorker';
 const initialState = {
     currentUser: {},
     correctResponses: [],
+    userAlgorithms: [],
     source: [],
     testCases: []
 }
