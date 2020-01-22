@@ -2,6 +2,7 @@ import React from 'react';
 import {addMethod} from '../../services/AdminApi'
 import {connect} from 'react-redux'
 import NewMethod from './NewMethod'
+import InputOutput from './InputOutput'
 
 
 
@@ -24,11 +25,7 @@ class Admin extends React.Component {
 
   mapTestCases = ()=>{
     const {testCases} = this.state
-    return testCases.map( (testC, index) => <tr key={index}>
-                            <td data-label="Test Cases">Sample {index + 1}</td>
-                            <td data-label="Input"><input type="text" name={index} placeholder='e.g. string "Nice", Number 2 , [ ] ....' onChange={this.handelInputChange}/></td>
-                            <td data-label="Output"><input type="text" name={index} placeholder='e.g. string Nice, Number 2 , [ ] ....' onChange={this.handelOutputChange}/></td>
-                          </tr> )
+    return testCases.map( (testC, index) => <InputOutput key={index} index={index} onHandelInput={this.handelInputChange} onHandelOutput={this.handelOutputChange}/>)
   }
 
   handelChange=(e)=>{
@@ -68,7 +65,7 @@ render(){
                     <tbody>
                     {this.mapTestCases()}
                     </tbody>
-              </table>
+                </table>
                
               <div className="ui divider"></div>
                             <div>  

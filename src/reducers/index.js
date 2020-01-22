@@ -6,6 +6,7 @@ const reducer = (state, action) =>{
             return {
                 ...state, currentUser: action.payload,
                           correctResponses: action.payload,
+                          userAlgorithms: action.payload,
                           userExist: false
              }
         case "LOGIN":

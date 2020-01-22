@@ -8,6 +8,7 @@ export const Link = {
     textDecoration: 'none',
     color: 'white',
   }
+export const BASE_URL="http://127.0.0.1:3000"
 export const URL="http://127.0.0.1:3000/users"
 export const URL_SOURCE="http://127.0.0.1:3000/sources"
 export const URL_CORRECT_RESPONSES="http://127.0.0.1:3000/correct_responses"

@@ -1,8 +1,10 @@
 
 
+
 export const logout =()=>{
     console.log("remove Token")
     localStorage.removeItem('token');
+    window.location.replace("http://127.0.0.1:3001/")
     return {
         type: "LOGOUT",
         payload: {}

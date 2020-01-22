@@ -1,6 +1,5 @@
 import React from 'react';
-import {fetchCompiler, saveAlgorithm} from '../../services/Api'
-import {connect} from 'react-redux'
+
 
 
  

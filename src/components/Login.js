@@ -27,8 +27,8 @@ class Login extends React.Component{
         login(this.state.fields).then(res => {
           if (!res.error) {
             console.log(res)
-            this.props.onLogin(res);
-            fetchUserAlgorithms().then(res => this.props.setUserAlgorithms(res)).then(() => fetchCorrectResponses().then(res => this.props.setCorrectResponses(res)))
+            this.props.onLogin(res)
+            fetchUserAlgorithms().then(res => this.props.setUserAlgorithms(res)).then(() => fetchCorrectResponses()).then(res => this.props.setCorrectResponses(res))
             // this.props.history.push('/');
           } else {
               console.log("eroor")

@@ -9,7 +9,7 @@ import {getCurrentUser} from './services/Api'
 import {onLogin, setSources, setTestCases, setCorrectResponses,setUserAlgorithms} from './actions'
 import {fetchSource, fetchTestCases,fetchCorrectResponses,fetchUserAlgorithms} from './services/Api'
 
-
+const token = localStorage.getItem('token');
 
 
 class App extends React.Component {
@@ -17,10 +17,9 @@ class App extends React.Component {
   componentDidMount() {
     fetchSource().then(res => this.props.setSources(res))
     fetchTestCases().then(res => this.props.setTestCases(res))
-    if (contstant.token) {
+    if (token!="undefined" && this.props.currentUser.id) {
       console.log('there is a token');
       fetchUserAlgorithms().then(res => this.props.setUserAlgorithms(res)).then(() => fetchCorrectResponses().then(res => this.props.setCorrectResponses(res)))
-      
       getCurrentUser().then(user => this.props.onLogin(user));
     }
   }
@@ -28,7 +27,7 @@ class App extends React.Component {
   render(){
         return (
             <div className="App">
-              {this.props.currentUser.id ? <Quiz/> : <Login onLogin={this.login}/>}
+              {this.props.currentUser.id ? <Quiz/> : <Login />}
             Hello
             </div>
           );

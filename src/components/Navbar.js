@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import * as contstant from '../contstants/Index'
 import {logout} from '../actions'
 
@@ -11,6 +11,8 @@ import {logout} from '../actions'
 
 
   const  Navbar = props => {
+
+     
 
     const currentUser = props.currentUser;
     const loggedIn = !!props.currentUser.id;
@@ -23,7 +25,8 @@ import {logout} from '../actions'
                 <a className="item">
                   <div
                     onClick={() => {
-                      props.logout();
+                      props.logout()
+                      
                       // props.history.push('/login'
                       // );
                     }}
