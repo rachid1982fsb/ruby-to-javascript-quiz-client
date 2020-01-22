@@ -19,8 +19,8 @@ class App extends React.Component {
     fetchTestCases().then(res => this.props.setTestCases(res))
     if (contstant.token) {
       console.log('there is a token');
-      fetchUserAlgorithms().then(res => this.props.setUserAlgorithms(res))
-      fetchCorrectResponses().then(res => this.props.setCorrectResponses(res))
+      fetchUserAlgorithms().then(res => this.props.setUserAlgorithms(res)).then(() => fetchCorrectResponses().then(res => this.props.setCorrectResponses(res)))
+      
       getCurrentUser().then(user => this.props.onLogin(user));
     }
   }

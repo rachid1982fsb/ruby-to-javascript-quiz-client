@@ -97,17 +97,11 @@ export const fetchTestCases=()=>{
 export const fetchUserAlgorithms=()=>{
     return fetch(contstant.USER_ALGORITHM_URL,{headers})
          .then(res => res.json())
-         .then(json => {
-           console.log(json)
-          return json})
           } 
 
 export const fetchCorrectResponses=()=>{
    return fetch(contstant.URL_CORRECT_RESPONSES,{headers})
         .then(res => res.json())
-        .then(json => {
-          console.log("Fetch fetchCorrectResponses ",json)
-          return json})
           }  
 
 export const fetchCompiler=(inCode)=>{

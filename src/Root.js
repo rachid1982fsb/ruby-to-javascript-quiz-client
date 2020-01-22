@@ -6,11 +6,11 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Navbar from './components/Navbar.js'
 import About from './components/About'
 import Login from './components/Login'
-import Admin from './components/Admin'
+import Admin from './components/Admin/Admin'
 import Signup from './components/Signup'
 import Quiz from './containers/Quiz'
 import Profile from './containers/Profile'
-import AnalyzeAlgorithm from './components/AnalyzeAlgorithm'
+import AnalyzeAlgorithm from './components/Algorithm'
 
 
 import App from './App'

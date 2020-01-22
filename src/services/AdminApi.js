@@ -1,18 +1,18 @@
 import * as contstant from '../contstants/Index'
 
 
-export const addMethod=(field)=>{
-    return  fetch(contstant.USER_ALGORITHM_URL, {
+export const addMethod=(source,testCases)=>{
+    return  fetch(contstant.URL_SOURCE, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
     },
     body: JSON.stringify({
-      user_id: user_id,
-      name: field.methodName,
-      discription: field.discription,
-      javascript_code: field.code
+      method_name: source.methodName,
+      method_discription: source.methodDiscription,
+      ruby_method: source.rubyMethod,
+      test_cases_attributes: testCases
      })
     }).then(function(resp) {
       if (Math.floor(resp.status/200) === 1) {
@@ -22,4 +22,3 @@ export const addMethod=(field)=>{
       }
     })
   }
-  
