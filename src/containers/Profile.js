@@ -31,8 +31,8 @@ class Profile extends React.Component {
       const {user, correctResponses, userAlgorithms}= this.state
       return <>
             <h1>This is my Profile component!</h1>
-            <div class="ui vertically divided grid">
-              <div class="two column row">
+            <div className="ui vertically divided grid">
+              <div className="two column row">
                 <Submissions correctResponses={correctResponses}/>
                 <UserInfo user={user}/>
                 <Algorithms userAlgorithms={userAlgorithms}/>

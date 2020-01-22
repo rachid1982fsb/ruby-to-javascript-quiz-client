@@ -25,23 +25,23 @@ class Submissions extends React.Component {
     render() {
 //   const {show, answer}= this.state
       return <>
-               <div class="column">
-                <div class="ui list">
+               <div className="column">
+                <div className="ui list">
                     <h2>Submissions List</h2>
                 {this.mapMethodsName()}
-                <div class="item">
-                    <div class="content">
-                    <div class="header">Compare the Triplets</div>
+                <div className="item">
+                    <div className="content">
+                    <div className="header">Compare the Triplets</div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="content">
-                    <div class="header">Birthday Cake Candles</div>
+                <div className="item">
+                    <div className="content">
+                    <div className="header">Birthday Cake Candles</div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="content">
-                    <div class="header">Mini-Max Sum</div>
+                <div className="item">
+                    <div className="content">
+                    <div className="header">Mini-Max Sum</div>
                     </div>
                 </div>
                 </div>

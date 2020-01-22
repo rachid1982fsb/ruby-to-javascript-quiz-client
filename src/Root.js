@@ -10,7 +10,7 @@ import Admin from './components/Admin/Admin'
 import Signup from './components/Signup'
 import Quiz from './containers/Quiz'
 import Profile from './containers/Profile'
-import AnalyzeAlgorithm from './components/Algorithm'
+import Algorithm from './components/Algorithm'
 
 
 import App from './App'
@@ -26,7 +26,7 @@ const Root = ({ store }) => (
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/quiz" component={Quiz} />
       <Route exact path="/profile" component={Profile} />
-      <Route exact path="/analyzeAlgorithm" component={AnalyzeAlgorithm} />
+      <Route exact path="/algorithm" component={Algorithm} />
     </Router>
   </Provider>
 )

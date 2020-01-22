@@ -23,10 +23,10 @@ class OneAlgorithm extends React.Component {
 
     render (){
     const {show}= this.state
-    return ( <div class="item">
-    <i class="linkify icon"></i>
-    <div class="content">
-    <div class="header" onClick={()=> this.showAnswer()} ><a>{this.props.algo.name}</a></div>
+    return ( <div className="item">
+    <i className="linkify icon"></i>
+    <div className="content">
+    <div className="header" onClick={()=> this.showAnswer()} ><a>{this.props.algo.name}</a></div>
     </div>
     <ModalAnswer show={show} answer={this.props.algo.javascript_code}/>
  </div>)

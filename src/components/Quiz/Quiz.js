@@ -49,26 +49,26 @@ class Quiz extends React.Component {
                 <div className="six wide column"><SampleTest  testCases={testCases}/></div>
               </div>
               <div className="ui grid">
-                <div class="ui form eight wide column">
-                  <div class="field">
+                <div className="ui form eight wide column">
+                  <div className="field">
                     <label>Write JAVASCRIPT Code Here. use the method name:"{source.name}"</label>
-                    <textarea rows="20" placeholder="Write your code here... "  onChange={this.handleChange} defaultValue={"function "+source.name+"()"} value={this.state.inputCode}/>
+                    <textarea rows="20" placeholder="Write your code here... "  onChange={this.handleChange} value={this.state.inputCode}/>
                   </div>
                 </div>
-                <div class="ui form six wide column">
-                    <div class="field">
+                <div className="ui form six wide column">
+                    <div className="field">
                       <label>The Method Output</label>
                       <textarea rows="20" placeholder="Code Output:..." value ={this.props.result} readOnly={true}>{this.props.result} </textarea>
                     </div>
                 </div>
                 </div>
               
-              <div class="ui divider"></div>
+              <div className="ui divider"></div>
               <div>  
-                <button class="ui primary button" onClick={() => this.props.onSubmitClick(inputCode)}>Submit Code</button>
-                <button class="ui left floated button" onClick={() => this.handelResetClick()}>Reset</button>
-                <button class="ui right labeled icon right floated button" onClick={() => this.handelNextClick()}><i class="right arrow icon"></i> Next</button>
-                <button class="ui right floated primary button" onClick={() => onRunClick(inputCode)}> Run Code </button>
+                <button className="ui primary button" onClick={() => this.props.onSubmitClick(inputCode)}>Submit Code</button>
+                <button className="ui left floated button" onClick={() => this.handelResetClick()}>Reset</button>
+                <button className="ui right labeled icon right floated button" onClick={() => this.handelNextClick()}><i className="right arrow icon"></i> Next</button>
+                <button className="ui right floated primary button" onClick={() => onRunClick(inputCode)}> Run Code </button>
 
               </div>
             </>
@@ -86,25 +86,25 @@ const mapStateToProps= state =>{
 export default connect(mapStateToProps)(Quiz)
 
 
-// <div class="ui clearing segment">
-// <h3 class="ui left floated header">
+// <div className="ui clearing segment">
+// <h3 className="ui left floated header">
 //   Ruby to javascript Quiz 
 // </h3>
 // </div>
-{/* <div class="ui message">
-<div class="header">
+{/* <div className="ui message">
+<div className="header">
 Method Name: 
 </div>
 <p>Method Discription:</p>
 </div> */}
 
-// <div class="ui section divider"></div>
+// <div className="ui section divider"></div>
 
 // <p> CompiledCode: {this.props.compiledCode}</p>
 // <div>
 // <lable>Ruby Method</lable>
-//   <div class="ui card">
-//     <div class="image">
+//   <div className="ui card">
+//     <div className="image">
 //       <textarea name="js_code" cols="100" rows="15" > </textarea>
 //       <img src="/images/avatar2/large/kristy.png"/>
 //     </div>

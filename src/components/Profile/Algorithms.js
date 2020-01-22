@@ -24,8 +24,8 @@ class Algorithms extends React.Component {
     render() {
 //   const {show, answer}= this.state
       return <>
-               <div class="column">
-                <div class="ui list">
+               <div className="column">
+                <div className="ui list">
                     <h2>Algorithms List</h2>
                 {this.mapMethodsName()}
                 </div>

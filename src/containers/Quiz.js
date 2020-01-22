@@ -23,7 +23,7 @@ class Quiz extends React.Component {
   })
 
   UNSAFE_componentWillMount(){
-    this.populateState()
+    this.populateState() 
   }
 
   setResult= ()=>{
@@ -68,8 +68,6 @@ class Quiz extends React.Component {
     const {qustion} = this.state
     let nextQustion = this.remainQuestions()[qustion + 1]
     this.setState({
-        // methodInput: contstant.testInOutput[5].input,
-        // methodOutput: contstant.testInOutput[5].output,
         qustion: qustion + 1,
         source: source.find(oneCode => oneCode.id === nextQustion),
         testCases: testCases.filter(testCase => testCase.source_id === nextQustion)
@@ -79,9 +77,6 @@ class Quiz extends React.Component {
   handleSubmit=(inCode)=>{
     const {result, methodOutput, testsResult, methodInput,testCases, source} = this.state
     const {currentUser}= this.props
-    // let input=testCases.map(test => test.input )
-    // let output=testCases.map(test => test.output )
-    // console.log(input,output)
     this.handleClick(inCode)
     // for(let i=0; i<4; i++){
     //   testsResult.push(this.runCode(input[i].split(",")))

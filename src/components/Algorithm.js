@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 
 
  
-class AnalyzeAlgorithm extends React.Component {
+class Algorithm extends React.Component {
 
 
   state=({
@@ -84,7 +84,7 @@ handelResetClick=()=>{
     return <>
     <h1>Run and Save your Algorithm</h1>
     <div className="ui form">
-    <div class="required field">  
+    <div className="required field">  
       <label>Method Name:</label>
       <input type="text" placeholder="Method Name" id="methodName"  onChange={this.handelChange}/>
     </div>
@@ -94,7 +94,7 @@ handelResetClick=()=>{
   </div>
   <div className="ui grid">
                 <div className="ui form eight wide column">
-                <div class="required field">  
+                <div className="required field">  
                     <label>Write JAVASCRIPT Code Here.</label>
                     <textarea rows="20" placeholder="Write your code here... "  id="code"  onChange={this.handelChange} value={code}/>
                   </div>
@@ -126,4 +126,4 @@ const mapStateToProps= state =>{
 }
 
 
-export default connect(mapStateToProps)(AnalyzeAlgorithm)
+export default connect(mapStateToProps)(Algorithm)

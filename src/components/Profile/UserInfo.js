@@ -6,7 +6,7 @@ class UserInfo extends React.Component {
   render() {
     const {user}=this.props
     return <>
-            <div class="column">
+            <div className="column">
                 <ul>
                       <li> Name: {user.name} </li>
                       <li> UserName: {user.username}</li>

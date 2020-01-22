@@ -28,8 +28,7 @@ class Login extends React.Component{
           if (!res.error) {
             console.log(res)
             this.props.onLogin(res);
-            fetchCorrectResponses(res.id).then(res => this.props.setCorrectResponses(res));
-            fetchUserAlgorithms(res.id).then(res => this.props.setCorrectResponses(res));
+            fetchUserAlgorithms().then(res => this.props.setUserAlgorithms(res)).then(() => fetchCorrectResponses().then(res => this.props.setCorrectResponses(res)))
             // this.props.history.push('/');
           } else {
               console.log("eroor")
@@ -100,7 +99,8 @@ const mapStateToProps= state =>{
 const mapDispatchToProps= dispatch =>{
     return {
         onLogin: resp => dispatch(onLogin(resp)),
-        setCorrectResponses: resp => dispatch(setCorrectResponses(resp))
+        setCorrectResponses: resp => dispatch(setCorrectResponses(resp)),
+        setUserAlgorithms: resp => dispatch(setUserAlgorithms(resp))   
     }
 }
 

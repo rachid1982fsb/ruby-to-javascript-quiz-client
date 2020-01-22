@@ -14,7 +14,7 @@ class NewMethod extends React.Component {
 
     render(){
         return(<>
-                <div class="required field">  
+                <div className="required field">  
                     <label>Method Name:</label>
                     <input type="text" placeholder="Method Name" id="methodName"  onChange={this.handelChange}/>
                 </div>
@@ -22,7 +22,7 @@ class NewMethod extends React.Component {
                   <label>Method Discription:</label>
                   <textarea placeholder="Method Discription:" id="methodDiscription"  onChange={this.handelChange}></textarea>
                 </div>
-                <div class="required field">
+                <div className="required field">
                   <label>Ruby Method Image link</label>
                   <input type="text" placeholder="URL..." id="rubyMethod"  onChange={this.handelChange}/>
                 </div>
