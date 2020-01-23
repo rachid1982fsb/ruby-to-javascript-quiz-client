@@ -10,10 +10,11 @@ class UserInfo extends React.Component {
     return <>
             <div className="column">
                 <ul>
-                      <li> Name: {user.name} </li>
-                      <li> UserName: {user.username}</li>
-                      <li> Email: {user.email} </li>
+                      <li  style={{fontWeight: 'bold'}}> Name: {user.name} </li>
+                      <li  style={{fontWeight: 'bold'}}> UserName: {user.username}</li>
+                      <li  style={{fontWeight: 'bold'}}> Email: {user.email} </li>
                 </ul>
+                <button className="ui right labeled icon right floated button" ><i className="edit icon"></i>Edit</button>
               </div>
            </>
   }

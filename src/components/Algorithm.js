@@ -98,7 +98,7 @@ handelResetClick=()=>{
                 <div className="ui form six wide column">
                 <div className="ui raised very padded text container segment">
                       <label>Code Output</label>
-                      <textarea rows="20" placeholder="Code Output:..." value= {result}  readOnly={true}/>
+                      <textarea style={{fontWeight: 'bold'}} rows="20" placeholder="Code Output:..." value= {result}  readOnly={true}/>
                     </div>
                 </div>
                 </div>

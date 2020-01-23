@@ -33,7 +33,6 @@ class App extends React.Component {
         return (
             <div className="App">
               {this.props.currentUser.id ? <Quiz/> : <Login />}
-            Hello
             </div>
           );
       }

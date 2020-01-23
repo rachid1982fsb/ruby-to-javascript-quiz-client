@@ -8,7 +8,9 @@ import InputOutput from './InputOutput'
 class Admin extends React.Component {
 
   state=({
+    edit: false,
     source: {
+      id: null,
       methodName: "",
       methodDiscription: "",
       rubyMethod: ""
@@ -43,9 +45,10 @@ class Admin extends React.Component {
   }
   
   handelResetClick=()=>{
-    console.log("rest")
     this.setState({
+      edit: false,
       source: {
+        id: null,
         methodName: "",
         methodDiscription: "",
         rubyMethod: ""
@@ -71,35 +74,42 @@ mapSources=()=>{
 }
 
   handelSelect=(event)=>{
-    console.log(event.target.value)
-    const method = this.props.source.find(method=> method.id == event.target.value)
-    const testCases = this.props.testCases.filter(test=> test.source_id == event.target.value)
-    this.setState({
-      testCases: testCases
-    })
-
-    this.setState({
-      source: {
-        methodName: method.method_name,
-        methodDiscription: method.method_discription,
-        rubyMethod: method.ruby_method
-      }
-    })
+    if(event.target.value){
+      const method = this.props.source.find(method=> method.id == event.target.value)
+      const testCases = this.props.testCases.filter(test=> test.source_id == event.target.value)
+      this.setState({
+        edit: true,
+        testCases: testCases,
+        source: {
+          id: method.id,
+          methodName: method.method_name,
+          methodDiscription: method.method_discription,
+          rubyMethod: method.ruby_method
+        }
+      })
+    }else{
+      this.handelResetClick()
+    }
   }
 
 render(){
-  const {source, testCases} = this.state
+  const {source, testCases,edit} = this.state
   return(
         <>
           <h1>Add new Ruby Methods to the Quiz</h1>
           <div className="ui grid">
           <div className="ten wide column"></div>
             <div  className="six wide column">
+            <div className="ui label">
+              <i className="edit icon"></i>
+            
+              <a className="detail">Select Method to Edit</a>
+            </div>
             <select className="ui search dropdown" onChange={this.handelSelect} >
               <option value="">Select Method</option> 
               {this.mapSources()}
             </select>
-            <button className="ui floated button" onClick={() => this.handelResetClick()}> Edit </button>
+            
           </div>
           </div>
               <div className="ui form">
@@ -120,6 +130,10 @@ render(){
                             <div>  
                               <button className="ui primary button" onClick={() => this.handelSaveClick()}>Save Code</button>
                               <button className="ui left floated button" onClick={() => this.handelResetClick()}>Reset</button>
+                              {edit ? <button className="ui right labeled icon right floated button" ><i className="edit icon"></i>Edit</button>
+                                      : null}
+                              {edit ? <button className="ui right labeled icon right floated button" ><i className="trash alternate icon"></i> Delete</button>
+                                      : null}
                 </div>
         </>
   )

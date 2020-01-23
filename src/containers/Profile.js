@@ -33,9 +33,15 @@ class Profile extends React.Component {
             <h1>This is my Profile component!</h1>
             <div className="ui vertically divided grid">
               <div className="two column row">
-                <Submissions correctResponses={correctResponses}/>
-                <UserInfo user={user}/>
-                <Algorithms userAlgorithms={userAlgorithms}/>
+                <div className="ui raised very padded text container segment">
+                  <Submissions correctResponses={correctResponses}/>
+                </div>
+                <div className="ui raised very padded text container segment">
+                  <UserInfo user={user}/>
+                </div>
+                <div className="ui raised very padded text container segment">
+                  <Algorithms userAlgorithms={userAlgorithms}/>
+                </div>
               </div>
               </div>
            </>

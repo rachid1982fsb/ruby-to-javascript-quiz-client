@@ -58,7 +58,7 @@ class Quiz extends React.Component {
                 <div className="ui form six wide column">
                 <div className="ui raised very padded text container segment">
                       <label style={{fontWeight: 'bold'}}>The Method Output. <i className="angle double down icon"></i></label>
-                      <textarea rows="15" placeholder="Code Output:..." value ={this.props.result} readOnly={true}>{this.props.result} </textarea>
+                      <textarea style={{fontWeight: 'bold'}} rows="15" placeholder="Code Output:..." value ={this.props.result} readOnly={true}>{this.props.result} </textarea>
                     </div>
                 </div>
                 </div>
