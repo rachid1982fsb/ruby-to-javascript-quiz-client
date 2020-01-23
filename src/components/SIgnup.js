@@ -88,7 +88,6 @@ class Signup extends React.Component{
 }
 const mapStateToProps= state =>{
     return {
-        username: state.username,
         userExist: state.userExist
     }
 }

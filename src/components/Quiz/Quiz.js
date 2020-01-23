@@ -10,7 +10,6 @@ class Quiz extends React.Component {
     inputCode: ""
   })
 
-
   handleChange=(e)=>{
     this.setState({
       inputCode: e.target.value
@@ -32,11 +31,11 @@ class Quiz extends React.Component {
 
   render() {
       const {source, testCases, onRunClick} = this.props
-      const {inputCode} = this.state
-      const {username} = this.props.currentUser
-    
+      const {inputCode} = this.state    
       return  <>
-              <h2 className="ui center aligned header"> Ruby to javascript Quiz </h2><br></br>
+              <h3 className="ui center aligned header" style={{margin: '0'}}> Ruby to javascript Quiz <div className="image">
+                  <img src="https://memorycardgame.s3.amazonaws.com/images/Screen%20Shot%202020-01-22%20at%203.45.56%20PM.png" alt="" style={{width:"150px", height:"100px" , borderRadius: 20, padding: 5}} />
+                </div></h3>
               <div className="ui message">
                   <div className="header">
                   Method Name: {source.method_name}
@@ -45,20 +44,21 @@ class Quiz extends React.Component {
               </div>
              
               <div className="ui grid">
-                <div className="ten wide column"><RubyMethod  url={source.ruby_method}/></div>
+                <div className="eight wide column"><RubyMethod  url={source.ruby_method}/></div>
                 <div className="six wide column"><SampleTest  testCases={testCases}/></div>
               </div>
               <div className="ui grid">
                 <div className="ui form eight wide column">
-                  <div className="field">
-                    <label>Write JAVASCRIPT Code Here. use the method name:"{source.name}"</label>
-                    <textarea rows="20" placeholder="Write your code here... "  onChange={this.handleChange} value={this.state.inputCode}/>
+                <div className="ui raised very padded text container segment">
+                  {/* <div className="field"> */}
+                    <label style={{fontWeight: 'bold'}}>Translate "{source.name}" Method to Javascript.<i className="angle double down icon"></i></label>
+                    <textarea rows="15" placeholder="Write your code here... "  onChange={this.handleChange} value={this.state.inputCode}/>
                   </div>
                 </div>
                 <div className="ui form six wide column">
-                    <div className="field">
-                      <label>The Method Output</label>
-                      <textarea rows="20" placeholder="Code Output:..." value ={this.props.result} readOnly={true}>{this.props.result} </textarea>
+                <div className="ui raised very padded text container segment">
+                      <label style={{fontWeight: 'bold'}}>The Method Output. <i className="angle double down icon"></i></label>
+                      <textarea rows="15" placeholder="Code Output:..." value ={this.props.result} readOnly={true}>{this.props.result} </textarea>
                     </div>
                 </div>
                 </div>
@@ -69,11 +69,9 @@ class Quiz extends React.Component {
                 <button className="ui left floated button" onClick={() => this.handelResetClick()}>Reset</button>
                 <button className="ui right labeled icon right floated button" onClick={() => this.handelNextClick()}><i className="right arrow icon"></i> Next</button>
                 <button className="ui right floated primary button" onClick={() => onRunClick(inputCode)}> Run Code </button>
-
               </div>
             </>
   }
-
 }
  
 
@@ -84,139 +82,3 @@ const mapStateToProps= state =>{
 }
 
 export default connect(mapStateToProps)(Quiz)
-
-
-// <div className="ui clearing segment">
-// <h3 className="ui left floated header">
-//   Ruby to javascript Quiz 
-// </h3>
-// </div>
-{/* <div className="ui message">
-<div className="header">
-Method Name: 
-</div>
-<p>Method Discription:</p>
-</div> */}
-
-// <div className="ui section divider"></div>
-
-// <p> CompiledCode: {this.props.compiledCode}</p>
-// <div>
-// <lable>Ruby Method</lable>
-//   <div className="ui card">
-//     <div className="image">
-//       <textarea name="js_code" cols="100" rows="15" > </textarea>
-//       <img src="/images/avatar2/large/kristy.png"/>
-//     </div>
-//   </div>
-// <textarea name="js_code" cols="100" rows="15"></textarea>
-// <lable>The Method Output</lable>
-// <textarea name="js_code" cols="70" rows="15" value ={this.props.result}> Result</textarea ><br></br>
-// </div>
-// <div>
-
-
-// import React from 'react';
-// import {connect} from 'react-redux'
-// import {fetchCompiler} from '../services/Api'
-
-
-
-// class Quiz extends React.Component {
-
-//   state=({
-//     compiledCode: "",
-//     inputCode: "",
-//     methodInput:[1,3,5,6]
-//   })
-
-  
-//   fetchCode= (inCode)=>{
-//     fetchCompiler(inCode)
-//     .then(res => { this.setState({
-//                   compiledCode: res
-//                   })
-//                 console.log(this.state.compiledCode)
-//               return this.state.compiledCode
-//           })
-//     .then(()=> this.handleRunClick() )
-//   }
-
- 
-
-//   handleChange=(e)=>{
-//     this.setState({
-//       inputCode: e.target.value
-//     })
-//   }
-
-
-//   runCode=()=>{
-//     let func = new Function("return " + this.state.compiledCode)();
-//     let result = func(this.state.methodInput)
-//     console.log(result)
-//   }
-  
-
-//   handleClick=()=>{
-//     this.fetchCode(this.state.inputCode)
-//   }
-
-//   handleRunClick=()=>{
-//     this.runCode(this.state.methodInput)
-//   }
-
- 
-
-//   render() {
-//       const {username} = this.props.currentUser
-//     return  <>
-//             <p> CompiledCode: {this.state.compiledCode}</p>
-//             <textarea name="js_code" cols="50" rows="5" id="method" onChange={this.handleChange}></textarea >
-//             <button onClick={this.handleClick}>Run</button>
-//             <h1>This is my Quiz component! Hello: {username}</h1>
-//             </>
-//   }
-
-
-
-// }
- 
-
-// const mapStateToProps= state =>{
-//   return {
-//     currentUser: state.currentUser
-//   }
-// }
-
-// export default connect(mapStateToProps)(Quiz)
-
-
-// fetchTest=()=>{
-//   fetch(URL, {method: 'post',
-//        headers: headers,
-//       //  client_secret: CLIENT_SECRET, 
-//        bady: Data
-//     }).then(data => console.log(data))
-//   }
-
-// import axios from 'axios'
-
-
-// const URL="http://api.hackerearth.com/code/compile/"
-// const headers = { "content-type" : "application/json; charset=UTF-8"}
-// const CLIENT_SECRET ="20df01c1563bbb5bd486f7eea7a6f470f9ef7560"
-// const source= "console.log('Rachid Here')"
-// const Data={
-//     'client_secret': CLIENT_SECRET,
-//     'source': source,
-//     'lang': "JAVASCRIPT"
-// }
-// fetchTest=()=>{
-//   axios({method: 'post',
-//        url: URL,
-//        headers: headers,
-//        client_secret: CLIENT_SECRET, 
-//        data: JSON.stringify(Data)
-//     }).then(data => console.log(data))
-//   }

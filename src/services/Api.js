@@ -18,6 +18,13 @@ export const getCurrentUser = () => {
     return fetch(contstant.CURRENT_USER_URL, {
       headers
     }).then(res => {
+      console.log("getCurrentUser", res)
+      return res.json()});
+  };
+  export const getCurrentUserData = (id) => {
+    return fetch(contstant.URL+"/"+id, {
+      headers
+    }).then(res => {
       return res.json()});
   };
 

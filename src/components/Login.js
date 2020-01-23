@@ -3,7 +3,7 @@ import {onLogin, setCorrectResponses,setUserAlgorithms} from '../actions'
 import {connect} from 'react-redux'
 import { NavLink } from 'react-router-dom';
 
-import {login,fetchCorrectResponses,fetchUserAlgorithms} from '../services/Api'
+import {login,fetchCorrectResponses,fetchUserAlgorithms,getCurrentUserData} from '../services/Api'
 
 
 
@@ -25,9 +25,13 @@ class Login extends React.Component{
     handelLoginClick = e => {
         e.preventDefault();
         login(this.state.fields).then(res => {
+        
           if (!res.error) {
-            console.log(res)
-            this.props.onLogin(res)
+            getCurrentUserData(res.id).then((user)=> {
+                user.jwt=res.jwt
+                this.props.onLogin(user)
+                console.log(user)})
+            // getCurrentUserData()
             fetchUserAlgorithms().then(res => this.props.setUserAlgorithms(res)).then(() => fetchCorrectResponses()).then(res => this.props.setCorrectResponses(res))
             // this.props.history.push('/');
           } else {
@@ -36,6 +40,25 @@ class Login extends React.Component{
           }
         });
       };
+ 
+       //   handelLoginClick = e => {
+    //     e.preventDefault();
+    //     login(this.state.fields).then(res => {
+    //       if (!res.error) {
+    //         getCurrentUserData().then((userData)=>{
+    //             userData.jwt= res.jwt
+    //             console.log(userData)
+    //             this.props.onLogin(userData)
+    //         }) 
+    //         // getCurrentUserData()
+    //         fetchUserAlgorithms().then(res => this.props.setUserAlgorithms(res)).then(() => fetchCorrectResponses()).then(res => this.props.setCorrectResponses(res))
+    //         // this.props.history.push('/');
+    //       } else {
+    //           console.log("eroor")
+    //         // this.setState({ error: true });
+    //       }
+    //     });
+    //   };
  
 
     // handelLoginClick=()=>{

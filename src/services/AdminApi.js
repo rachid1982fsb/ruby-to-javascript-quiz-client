@@ -17,6 +17,7 @@ export const addMethod=(source,testCases)=>{
     }).then(function(resp) {
       if (Math.floor(resp.status/200) === 1) {
         console.log("saved rachid", resp)
+        return resp
       } else {
         console.log("ERROR", resp)
       }

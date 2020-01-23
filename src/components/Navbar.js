@@ -4,18 +4,10 @@ import { NavLink, Redirect } from 'react-router-dom';
 import * as contstant from '../contstants/Index'
 import {logout} from '../actions'
 
-
-
-
-
-
-
   const  Navbar = props => {
 
-     
-
     const currentUser = props.currentUser;
-    const loggedIn = !!props.currentUser.id;
+    const loggedIn = !!currentUser.id;
       return (
         <div className="ui inverted menu">
            {loggedIn ? (
@@ -26,9 +18,6 @@ import {logout} from '../actions'
                   <div
                     onClick={() => {
                       props.logout()
-                      
-                      // props.history.push('/login'
-                      // );
                     }}
                     className="ui primary button"
                   >
@@ -39,12 +28,12 @@ import {logout} from '../actions'
           <NavLink to="/" exact className="item">
           Sign In
           </NavLink>)}
-          {/* <NavLink to="/login" exact  className="item"> {contstant.token ? "LogOut": "Login"} </NavLink> */}
           <NavLink to="/quiz" exact  className="item"> Quiz </NavLink>
-          <NavLink to="/profile" exact  className="item"> Profile </NavLink>
+          {loggedIn ? <NavLink to="/profile" exact  className="item"> Profile </NavLink> : null}
           <NavLink to="/algorithm" exact  className="item"> Algorithm </NavLink>
-          <NavLink to="/admin" exact  className="item"> Admin </NavLink>
+          {currentUser.username==="Admin" ? <NavLink to="/admin" exact  className="item"> Admin </NavLink> : null }
           <NavLink to="/about" exact  className="item"> About </NavLink>
+          
         </div>
       )
     
