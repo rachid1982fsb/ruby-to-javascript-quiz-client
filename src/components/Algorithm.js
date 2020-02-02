@@ -1,6 +1,8 @@
 import React from 'react';
-import {fetchCompiler, saveAlgorithm} from '../services/Api'
+import {saveAlgorithm,fetchUserAlgorithms} from '../services/Api'
 import {connect} from 'react-redux'
+import {setUserAlgorithms} from '../actions'
+
 
 
  
@@ -51,10 +53,15 @@ handelSaveClick=()=>{
   const {currentUser}= this.props
   if(currentUser.id){
     saveAlgorithm(this.state.fields, currentUser.id)
+    .then(() => fetchUserAlgorithms()).then(res => this.props.setUserAlgorithms(res))
   }else{
     alert("you can't save, check your login ")
   }
-  this.handelResetClick()
+  const newFields = { ...this.state.fields, code: "", result: "", methodName: "",discription: ""};
+  this.setState({
+    fields: newFields
+  })
+  alert("Your Algorithm has been saved successfully")
 }
 
 handelResetClick=()=>{
@@ -67,7 +74,7 @@ handelResetClick=()=>{
 
 
   render() {
-    const {code, result} = this.state.fields
+    const {code, result, discription,methodName} = this.state.fields
     return <>
     
        <img className="ui small right floated image" src="https://camo.githubusercontent.com/eb464a60a4a47f8b600aa71bfbc6aff3fe5c5392/68747470733a2f2f7261772e6769746875622e636f6d2f766f6f646f6f74696b69676f642f6c6f676f2e6a732f6d61737465722f6a732e706e67" alt="" style={{width:"100px", height:"100px" , borderRadius: 20, padding: 5}} />
@@ -80,11 +87,11 @@ handelResetClick=()=>{
     <div className="ui form">
     <div className="required field">  
       <label>Method Name:</label>
-      <input type="text" placeholder="Method Name" id="methodName"  onChange={this.handelChange}/>
+      <input type="text" placeholder="Method Name" id="methodName"  onChange={this.handelChange} value={methodName}/>
     </div>
   <div className="field">
     <label>Method Discription:</label>
-    <textarea placeholder="Method Discription:" id="discription"  onChange={this.handelChange}></textarea>
+    <textarea placeholder="Method Discription:" id="discription"  onChange={this.handelChange} value={discription}></textarea>
   </div>
   <div className="ui grid">
                 <div className="ui form eight wide column">
@@ -121,5 +128,10 @@ const mapStateToProps= state =>{
   }
 }
 
+const mapDispatchToProps= dispatch =>{
+  return {
+    setUserAlgorithms: resp => dispatch(setUserAlgorithms(resp))
+  }
+}
 
-export default connect(mapStateToProps)(Algorithm)
+export default connect(mapStateToProps, mapDispatchToProps)(Algorithm)

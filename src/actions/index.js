@@ -18,15 +18,6 @@ export const onLogin =(data)=>{
     }
 }
 
-// export const setCurrrneUser =(data)=>{
-//     localStorage.setItem('token', data.jwt);
-//     return {
-//         type: "LOGIN",
-//         payload: data
-//     }
-// }
-
-
 export const setSources =(source) =>{
     return{
         type: "SET_SOURCE",

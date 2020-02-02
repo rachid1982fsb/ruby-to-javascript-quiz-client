@@ -107,7 +107,8 @@ class Login extends React.Component{
                             <NavLink to="/signup" exact >Sign Up</NavLink>
                         </div><br/>
                         <div className="ui big button" >
-                            Guest
+                            <NavLink to="/quiz" exact >Guest</NavLink>
+                            
                         </div>
                         </div>
                     </div>

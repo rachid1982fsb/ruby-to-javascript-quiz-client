@@ -1,5 +1,6 @@
 import * as contstant from '../contstants/Index'
 
+
 const headers = {
     'Content-Type': 'application/json',
     Accepts: 'application/json',
@@ -134,21 +135,40 @@ export const fetchCompiler=(inCode)=>{
 
 
 
+export const editAlgorithm=(newAlgo)=>{
+   return  fetch(contstant.USER_ALGORITHM_URL+"/"+newAlgo.id, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify({user_algorithm: newAlgo})
+            }).then(function(resp) {
+              if (Math.floor(resp.status/200) === 1) {
+                console.log("Algorithm Edited ",resp)
+                return resp
+              } else {
+                console.log("ERROR", resp)
+              }
+            })
+    }
+    
+    export const deleteAlgorithm=(id)=>{
+      return  fetch(contstant.USER_ALGORITHM_URL+"/"+id, {
+                 method: "DELETE",
+                 headers: {
+                   "Content-Type": "application/json",
+                   Accept: "application/json"
+               }
+               }).then(function(resp) {
+                 if (Math.floor(resp.status/200) === 1) {
+                   console.log("Algorithm Edited ",resp)
+                   return resp
+                 } else {
+                   console.log("ERROR", resp)
+                 }
+               })
+       }
 
-// const signup = data => {
-//     return fetch(`${API_ROOT}/users`, {
-//         method: 'POST',
-//         headers,
-//         body: JSON.stringify(data)
-//     })
-//         .then(resp => resp.json());
-// }
 
-// const getCurrentUser = () => {
-//     return fetch(`${API_ROOT}/current_user`, {
-//         headers
-//     })
-//         .then(resp => {
-//             return resp.json();
-//         });
-// };
+

@@ -1,10 +1,28 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Ruby To Javascript Quiz Frontend
 
-## Available Scripts
+[backend repository link ](https://github.com/rachid1982fsb/ruby-to-javascript-quiz-backend).
 
-In the project directory, you can run:
+##  About
 
-### `yarn start`
+A Quiz that asks a user to translate a ruby method to javascript code and provide a page to save and test algorithms
+ 
+### `user Story`
+User can signUp or navigate as a guest.<br />
+The user will get a Ruby Method with a name, description, and two examples with input & output.<br />
+Users can translate the ruby method to javascript in an editor container.<br />
+Users can test the output before submitting the answer.<br />
+If the User Submit the code and the output match, he/she can press next and get a more laborious method to translate.<br />
+User can view his/her profile and check the previews methods that he/she wrote.<br />
+The user can resume the quiz from the previous attempt whenever he/she login.<br />
+An Algorithm page that lets a user write, run, and save an algorithm.<br />
+Admin page to allow admins to add more ruby methods to the quiz.<br />
+
+### `Installation`
+Clone the repository.
+
+Run npm start in the console to open the project in the browser.<br />
+
+This repository is set up to be used with backend copy witch has to be running in order to login. backend instructions.<br />
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -12,57 +30,22 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `yarn test`
+### `Technology`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+React.JS.<br />
+Redux.<br />
+React Router.<br />
+Rails API ([backend repository link ](https://github.com/rachid1982fsb/ruby-to-javascript-quiz-backend)).<br />
+Closure Compiler Service API.<br />
+HTML/CSS & Semantic UI<br />
 
-### `yarn build`
+### `Contributing`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Contributions are welcome. Feel free to open a pull request or branch from this project.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### `Copywrite`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[Rachid Rakaa Production](https://github.com/rachid1982fsb)
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### `License`
+https://opensource.org/licenses/MIT
