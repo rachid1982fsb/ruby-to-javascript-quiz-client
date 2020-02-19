@@ -4,7 +4,7 @@
 export const logout =()=>{
     console.log("remove Token")
     localStorage.removeItem('token');
-    window.location.replace("http://127.0.0.1:3000/")
+    window.location.replace("http://ruby-to-javascript-quiz-client.herokuapp.com/")
     return {
         type: "LOGOUT",
         payload: {}
