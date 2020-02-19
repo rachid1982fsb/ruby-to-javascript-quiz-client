@@ -83,7 +83,7 @@ export const createUser=(data)=>{
             }).then(function(resp) {
               if (Math.floor(resp.status/200) === 1) {
                 console.log(resp)
-                return {username: data.username, password: data.username}
+                return {username: data.username, password: data.password}
               } else {
                 console.log("ERROR", resp)
               }
