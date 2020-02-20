@@ -9,6 +9,9 @@ class About extends React.Component {
               <div class="header">
               About
               </div>
+              <h4> to access admin page sign In as Admin :</h4>
+              <p> username:  Admin </p>
+              <p> password:  admin </p>
               <ul class="list">
                 <li>The user will get a Ruby Method with a name, description, and 2 examples with input & output.</li>
                 <li>Users can translate the ruby method to javascript in an editor container.</li>
