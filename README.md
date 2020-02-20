@@ -18,7 +18,7 @@ A Quiz that asks a user to translate a ruby method to javascript code and provid
 * An Algorithm page that lets a user write, run, and save an algorithm.<br />
 * Admin page to allow admins to add more ruby methods to the quiz.<br />
 ### `Admin Page`
-To access Admin Page singIn with:
+To access Admin Page singIn with:<br/>
 Username: Admin <br />
 Password: admin <br />
 
