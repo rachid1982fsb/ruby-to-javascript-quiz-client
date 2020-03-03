@@ -4,8 +4,6 @@ import {connect} from 'react-redux'
 import {setUserAlgorithms} from '../actions'
 
 
-
- 
 class Algorithm extends React.Component {
 
 

@@ -1,11 +1,6 @@
 import React from 'react';
 
-
-
- 
 class NewMethod extends React.Component {
-
-
 
     handelChange=(e)=>{
         this.props.onHandelChange(e)
