@@ -6,9 +6,10 @@ class ModalAnswer extends React.Component{
 
 
 render(){
-    const {show,answer,onHandleChange}= this.props
+    const {show,answer,discription, onHandleChange}= this.props
     return ( show ? <div className="ui form six wide column" centered={true}>
                         <div className="scrolling content">
+                        <TextArea rows="10" value={discription} readOnly={true}></TextArea>
                         <TextArea rows="20" value={answer} onChange={onHandleChange}></TextArea>
                         </div>
                     </div> : null
