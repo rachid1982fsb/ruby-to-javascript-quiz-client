@@ -3,13 +3,16 @@
 
 export const logout =()=>{
     console.log("remove Token")
-    localStorage.removeItem('token');
-    window.location.replace("http://ruby-to-javascript-quiz-client.herokuapp.com/")
+    // localStorage.removeItem('token');
+    localStorage.clear()
+    this.props.history.push('/')
+    // window.location.replace("http://ruby-to-javascript-quiz-client.herokuapp.com/")
     return {
         type: "LOGOUT",
         payload: {}
     }
 }
+
 export const onLogin =(data)=>{
     localStorage.setItem('token', data.jwt);
     return {
