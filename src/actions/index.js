@@ -5,8 +5,7 @@ export const logout =()=>{
     console.log("remove Token")
     // localStorage.removeItem('token');
     localStorage.clear()
-    this.props.history.push('/')
-    // window.location.replace("http://ruby-to-javascript-quiz-client.herokuapp.com/")
+    window.location.replace("http://ruby-to-javascript-quiz-client.herokuapp.com/")
     return {
         type: "LOGOUT",
         payload: {}
