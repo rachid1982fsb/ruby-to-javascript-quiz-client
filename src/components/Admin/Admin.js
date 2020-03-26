@@ -150,3 +150,24 @@ const mapStateToProps= state =>{
 
 
 export default connect(mapStateToProps)(Admin)
+
+
+// class ComponentName extends React.Component {
+
+//   constructor(props) {
+//     super(props);
+//     this.state = {firstState: "state value"};
+//   }
+
+//   static getDerivedStateFromProps(props, state) {
+//     return {firstState: props.firstProps };
+//   }
+
+//   render() {
+//     return (
+//       <h1>Print out the state value: {this.state.firstState}</h1>
+//     );
+//   }
+// }
+
+// export default ComponentName
