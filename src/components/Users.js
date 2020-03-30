@@ -7,7 +7,8 @@ class Users extends React.Component {
         usersName: [],
         userSelected: 0
     })
-    componentDidMount(){
+    
+    UNSAFE_componentWillMount(){
         users().then( users => this.setState({
             usersName: users
         }) )
