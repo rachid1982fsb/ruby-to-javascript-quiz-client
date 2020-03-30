@@ -8,6 +8,7 @@ import {logout} from '../actions'
 
     const currentUser = props.currentUser;
     const loggedIn = !!currentUser.id;
+
       return (
         <div className="ui inverted menu">
            {loggedIn ? (
@@ -32,6 +33,7 @@ import {logout} from '../actions'
           {loggedIn ? <NavLink to="/profile" exact  className="item"> Profile </NavLink> : null}
           <NavLink to="/algorithm" exact  className="item"> Algorithm </NavLink>
           {currentUser.username==="Admin" ? <NavLink to="/admin" exact  className="item"> Admin </NavLink> : null }
+          {currentUser.username==="Admin" ? <NavLink to="/users" exact  className="item"> Users </NavLink> : null }
           <NavLink to="/about" exact  className="item"> About </NavLink>
           
         </div>
