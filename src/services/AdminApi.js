@@ -1,13 +1,14 @@
 import * as contstant from '../contstants/Index'
 
+const headers = {
+  'Content-Type': 'application/json',
+  Accepts: 'application/json'
+};
 
 export const addMethod=(source,testCases)=>{
     return  fetch(contstant.URL_SOURCE, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-    },
+      headers,
     body: JSON.stringify({
       method_name: source.methodName,
       method_discription: source.methodDiscription,
@@ -23,3 +24,10 @@ export const addMethod=(source,testCases)=>{
       }
     })
   }
+  export const users = () => {
+    return fetch(contstant.URL, {
+      headers
+    }).then(res => {
+      console.log("User", res)
+      return res.json()});
+  };
