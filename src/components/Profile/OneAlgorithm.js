@@ -64,16 +64,18 @@ class OneAlgorithm extends React.Component {
 
 
     render (){
-    const {show,code,discription}= this.state
-    return ( <div className="item">
-    <i className="linkify icon"></i>
-    <div className="content">
-    <div className="header" onClick={()=> this.showAnswer()} ><a>{this.props.algo.name}</a></div>
-    </div>
-    <ModalAnswer show={show} answer={code} discription= {discription}  onHandleChange={this.handleChange}/>
-    {show ?  <button className="ui right labeled icon right floated button" onClick={this.handleEditClick}><i className="edit icon"></i>Edit</button> : null}
-    {show ?  <button className="ui right labeled icon right floated button" onClick={this.handleDeleteClick}><i className="trash alternate icon"></i> Delete</button> : null}
- </div>)
+        const {show,code,discription}= this.state
+
+        return ( <div className="item">
+            <i className="linkify icon"></i>
+            <div className="content">
+                <div className="header" onClick={()=> this.showAnswer()} ><a>{this.props.algo.name}</a></div>
+            </div>
+            <ModalAnswer show={show} answer={code} discription= {discription}  onHandleChange={this.handleChange}/>
+            {show ?  <button className="ui right labeled icon right floated button" onClick={this.handleEditClick}><i className="edit icon"></i>Edit</button> : null}
+            {show ?  <button className="ui right labeled icon right floated button" onClick={this.handleDeleteClick}><i className="trash alternate icon"></i> Delete</button> : null}
+            </div>
+        )
     }
 }
 
