@@ -7,7 +7,7 @@ const RubyMethod=(props)=>{
     
 
     return(
-      <div class="ui raised very padded text container segment">
+      <div className="ui raised very padded text container segment">
       <label style={{fontWeight: 'bold'}}>Ruby Method<i className="angle double down icon"></i></label>
           <div className="image">
             <img src={props.url} alt="HTML5" style={{width:"600px", height:"300px", borderRadius: 20, padding: 5}}/>

@@ -72,11 +72,11 @@ class Login extends React.Component{
     render(){
             return(
                 <div>  
-                    <div class="ui grid">
-                    <div class="three column row">
-                        <div class="column"></div>
-                        <div class="column"><img src="https://memorycardgame.s3.amazonaws.com/images/Screen%20Shot%202020-01-22%20at%203.45.56%20PM.png" alt="" style={{width:"300px", height:"200px" , borderRadius: 20, padding: 5}} /></div>
-                        <div class="column"></div>
+                    <div className="ui grid">
+                    <div className="three column row">
+                        <div className="column"></div>
+                        <div className="column"><img src="https://memorycardgame.s3.amazonaws.com/images/Screen%20Shot%202020-01-22%20at%203.45.56%20PM.png" alt="" style={{width:"300px", height:"200px" , borderRadius: 20, padding: 5}} /></div>
+                        <div className="column"></div>
                     </div> 
                     </div>               
                 

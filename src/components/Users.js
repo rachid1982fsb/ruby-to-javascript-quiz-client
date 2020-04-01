@@ -1,27 +1,51 @@
 import React from'react'
-import {users} from '../services/AdminApi'
+// import {users} from '../services/AdminApi'
 
-class Users extends React.Component {
+class UsersC extends React.Component {
+   
 
     state=({
-        usersName: [],
+        users: ["dsa"],
         userSelected: 0
-    })
-    
-    UNSAFE_componentWillMount(){
-        users().then( users => this.setState({
-            usersName: users
-        }) )
-        console.log("Now", users())
-        console.log("Now", this.state.usersName)
+    })    
+
+    static getDerivedStateFromProps(props, state){
+        return {users: props.usersInfo}
     }
+
+    mapUsers=()=>{
+        return this.state.users.map( user => <tr key={user.id} className="">
+                                                <td className="">{user.username}</td>
+                                                <td className="">{user.name}</td>
+                                                <td className="">{user.email}</td>
+                                             </tr>
+                                               
+                )
+    }
+
+
 
     render(){
 
         return <>
-                Hello:  {this.state.usersName[0].username}
+                <h1>Users Information : </h1><br/>
+
+                <table className="ui single line table">
+                    <thead className="">
+                        <tr className="">
+                            <th className="">User Name</th>
+                            <th className="">Name</th>
+                            <th className="">E-mail address</th>
+                        </tr>
+                    </thead>
+
+                    <tbody className="">
+                        {this.mapUsers()}
+                    </tbody>
+                    
+                </table>
                </>
     }
 }
 
-export default Users
+export default UsersC

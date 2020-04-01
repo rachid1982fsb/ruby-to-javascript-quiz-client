@@ -5,8 +5,8 @@ class About extends React.Component {
   render() {
     return (
           <>
-          <div class="ui message">
-              <div class="header">
+          <div className="ui message">
+              <div className="header">
               About
               </div>
               <h4> To access admin page sign In as Admin :</h4>
@@ -14,7 +14,7 @@ class About extends React.Component {
                 <li> username:  Admin </li>
                 <li> password:  admin </li>
               </ul>
-              <ul class="list">
+              <ul className="list">
                 <li>The user will get a Ruby Method with a name, description, and 2 examples with input & output.</li>
                 <li>Users can translate the ruby method to javascript in an editor container.</li>
                 <li>Users can test the output before submitting the answer.</li>
