@@ -14,6 +14,7 @@ export const logout =()=>{
 
 export const onLogin =(data)=>{
     localStorage.setItem('token', data.jwt);
+    localStorage.setItem('userId', data.id);
     return {
         type: "LOGIN",
         payload: data

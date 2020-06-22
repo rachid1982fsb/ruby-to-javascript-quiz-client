@@ -15,8 +15,8 @@ const SampleTest=(props)=>{
                   {mapTestCases()}
                   <p src="" alt="HTML5" style={{width:"400px", height:"200px", borderRadius: 20, padding: 5}}/>
                   </div>
-        </div>
-       )
+      </div>
+    )
 }
 
 
