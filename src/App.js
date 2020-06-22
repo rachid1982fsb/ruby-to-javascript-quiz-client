@@ -10,6 +10,7 @@ import {onLogin, setSources, setTestCases, setCorrectResponses,setUserAlgorithms
 import {fetchSource, fetchTestCases,fetchCorrectResponses,fetchUserAlgorithms,getCurrentUserData} from './services/Api'
 
 const token = localStorage.getItem('token');
+const userId = localStorage.getItem('userId');
 
 
 class App extends React.Component {
@@ -17,9 +18,9 @@ class App extends React.Component {
   componentDidMount() {
     fetchSource().then(res => this.props.setSources(res))
     fetchTestCases().then(res => this.props.setTestCases(res))
-    if (token!="undefined" && token!=null) {
+    if (token!="undefined" && token!=null && userId !="undefined" && userId !=null) {
       
-      getCurrentUserData(this.props.currentUser.id).then((user)=> {
+      getCurrentUserData(userId).then((user)=> {
         user.jwt=token
         this.props.onLogin(user)
         console.log(user)})
