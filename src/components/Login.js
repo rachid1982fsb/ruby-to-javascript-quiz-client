@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 import {login,fetchCorrectResponses,fetchUserAlgorithms,getCurrentUserData} from '../services/Api'
 
+// To do: fix the click button for the signup and Guest the entire button should be clickable 
 
 
 class Login extends React.Component{
